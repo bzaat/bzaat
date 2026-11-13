@@ -33,19 +33,24 @@ h2{font-size:22px;margin:0 0 16px}
 table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0}
 th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
 th{color:var(--muted);font-weight:600}
+.figs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.figs figure{margin:0}
+.figs img{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;display:block;background:#fff}
+.figs figcaption{font-size:13px;color:var(--muted);margin-top:4px}
+.facts{grid-template-columns:110px 1fr;font-size:15px;margin:10px 0}
 .split{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:center}
 .split img{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;display:block}
 ul{margin:6px 0;padding-left:20px}
 dl{display:grid;grid-template-columns:150px 1fr;gap:8px 16px;margin:0}
 dt{color:var(--muted)} dd{margin:0}
 footer{padding:28px 0 48px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
-@media (max-width:640px){.split{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.hero img{order:-1;width:120px;height:154px}dl{grid-template-columns:1fr}nav{display:none}}
+@media (max-width:640px){.figs{grid-template-columns:1fr}.facts{grid-template-columns:1fr}.split{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.hero img{order:-1;width:120px;height:154px}dl{grid-template-columns:1fr}nav{display:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header class="top"><strong>Khanh Nguyen</strong>
-<nav><a href="#projects">Projects</a><a href="#publications">Publications</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav></header>
+<nav><a href="#projects">Projects</a><a href="#research">Research</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav></header>
 
 <div class="hero">
 <div>
@@ -91,40 +96,60 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:14px;border-top:1px soli
 <h3>Melbourne housing price prediction</h3>
 <p class="meta">Python · 10,480 cleaned transactions</p>
 <p>Seven regression models compared with 5-fold cross-validation on log-price, plus an ablation of suburb-level target encoding with a shuffled-suburb leakage control and SHAP interpretation. XGBoost and LightGBM reached R² = 0.843; suburb encoding raised Random Forest test R² from 0.815 to 0.835 (paper values).</p>
+<div class="figs">
+<figure><a href="img/melb_model_comparison.png"><img src="img/melb_model_comparison.png" alt="5-fold CV R2 of seven regression models" loading="lazy"></a><figcaption>5-fold CV R² of the 7 models (re-computed from the repo code).</figcaption></figure>
+<figure><a href="img/melb_suburb_ablation.png"><img src="img/melb_suburb_ablation.png" alt="Random Forest suburb ablation and shuffled-suburb control" loading="lazy"></a><figcaption>Random Forest without / with / shuffled suburb (re-computed; the paper reports 0.815 / 0.835 / 0.810 test R²).</figcaption></figure>
+</div>
 <div class="chips"><span class="chip">Scikit-learn</span><span class="chip">XGBoost</span><span class="chip">LightGBM</span><span class="chip">SHAP</span><span class="chip">SQL</span></div>
 <p><a href="https://github.com/bzaat/Real-Estate-Price-Analysis">View on GitHub</a></p>
 </div>
 </section>
 
-<section id="publications">
-<h2>Publications</h2>
+<section id="research">
+<h2>Research</h2>
 <div class="card">
 <div class="split">
 <div>
 <h3>The Impact of Suburb-Level Encoding on Melbourne Housing Price Prediction</h3>
-<p class="meta">SCI-2026, 8th Int. Conf. on Smart Computing and Informatics · First author · Accepted / under publication</p>
-<p>Presented at SCI-2026, Swinburne Vietnam, Hanoi (28–29 April 2026).</p>
-<p><a href="https://github.com/bzaat/Real-Estate-Price-Analysis/blob/main/Realestate%20(3).pdf">Accepted manuscript (PDF)</a> · <a href="SCI-2026_Certificate_of_Appreciation.pdf">Presentation certificate (PDF)</a></p>
+<p class="meta">SCI-2026, 8th Int. Conf. on Smart Computing and Informatics · First author (1 of 5) · Accepted / under publication · Presented 28–29 April 2026, Swinburne Vietnam, Hanoi</p>
+<dl class="facts">
+<dt>Problem</dt><dd>Does adding suburb-level location information improve house-price prediction, and is the gain real locality signal?</dd>
+<dt>Method</dt><dd>7 regression models on 10,480 cleaned Melbourne transactions (log-price target, 5-fold CV); suburb target-encoded inside the pipeline; Random Forest ablation with, without and with shuffled suburb labels; SHAP.</dd>
+<dt>Key result</dt><dd>XGBoost and LightGBM best (CV R² 0.843). Suburb encoding raised Random Forest test R² from 0.815 to 0.835; with shuffled suburb it fell to 0.810.</dd>
+</dl>
+<p><a href="https://github.com/bzaat/Real-Estate-Price-Analysis/blob/main/Realestate%20(3).pdf">Accepted manuscript (PDF)</a> · <a href="SCI-2026_Certificate_of_Appreciation.pdf">Presentation certificate (PDF)</a> · <a href="https://github.com/bzaat/Real-Estate-Price-Analysis">Code</a></p>
 </div>
 <a href="SCI-2026_Certificate_of_Appreciation.pdf"><img src="SCI-2026_Certificate.jpg" alt="SCI-2026 certificate of appreciation for presenting the paper" loading="lazy"></a>
 </div>
 </div>
+
 <div class="card">
 <h3>Uncertainty-Triggered Active Sensing for UAV Maritime Rescue Prioritization under Wave Occlusion</h3>
-<p class="meta">IECON 2026 · Third author · Accepted / under publication</p>
-<p>Simulation study: a risk-aware victim-ranking score raised worst-case survival from 0.16 to 0.25 over a distance-based router (500 Monte Carlo trials), and uncertainty-triggered verification cut false-alarm visits from 60.5% to 35%.</p>
+<p class="meta">IECON 2026 · Third author (3 of 4) · Accepted / under publication</p>
+<dl class="facts">
+<dt>Problem</dt><dd>In maritime search and rescue, a high-risk casualty partly hidden by waves or glare can be postponed by a deterministic routing policy because the visual evidence is ambiguous.</dd>
+<dt>Method</dt><dd>AES-RARR: evidential uncertainty for posture ambiguity, a drift-aware Kalman tracker, lower-altitude verification only when a target is both uncertain and plausibly urgent, and a logistics-aware risk score to order rescues.</dd>
+<dt>Evaluation</dt><dd>Simulation only: 500 Monte Carlo trials, 3 victims, 2 distractors, 30% initial occlusion. Perception is an evidential proxy; no detector was trained.</dd>
+<dt>Key result</dt><dd>Versus a distance-based router: worst-case survival 0.25 vs 0.16, catastrophic failures 67% vs 83%, false-alarm visits 35.0% vs 60.5%.</dd>
+<dt>Limitation</dt><dd>Results against deterministic expected-risk routing are mixed, because verification descents add latency.</dd>
+</dl>
 <p><a href="https://drive.google.com/file/d/1FCH_cXJ0TVkZ_ojBMmjDJuSu9dBFo4y0/view?usp=sharing">Paper (PDF)</a></p>
+</div>
+
+<div class="card">
+<h3>AITA Lab reading group: federated learning</h3>
+<p class="meta">10/2025–02/2026 · FPT University</p>
+<p>Reviewed and presented research papers in the group.</p>
 </div>
 </section>
 
 <section id="skills">
-<h2>Skills and activity</h2>
+<h2>Skills</h2>
 <dl>
 <dt>Core areas</dt><dd>Machine Learning, Deep Learning, Computer Vision, Predictive Modeling, Data Analysis</dd>
 <dt>Languages</dt><dd>Python, C (basic), SQL, LaTeX</dd>
 <dt>Tools</dt><dd>PyTorch, Scikit-learn, OpenCV, Git/GitHub, Linux, Bash, uv, Docker</dd>
 <dt>Spoken languages</dt><dd>Vietnamese (native), English (professional working proficiency)</dd>
-<dt>Lab activity</dt><dd>AITA Lab reading group on federated learning (10/2025–02/2026): reviewed and presented papers</dd>
 </dl>
 </section>
 
