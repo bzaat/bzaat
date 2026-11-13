@@ -24,7 +24,7 @@ ResNet-50 built manually with `torch.nn`, used to compare **training from scratc
 
 | Setup | Epochs | Test accuracy |
 |---|---|---|
-| ResNet-50 from scratch | 50 | ~39% |
+| ResNet-50 from scratch | 50 | ~36% |
 | ImageNet-pretrained, fine-tuned (layer4 + new head) | 10 | ~93% |
 
 Takeaway: a large un-pretrained network overfits a small dataset, while a pretrained backbone reaches high accuracy in very few epochs.
