@@ -12,9 +12,9 @@
 
 ## About me
 
-I am an AI undergraduate looking for an **11-week full-time OJT internship (Feb–Apr 2027) with TAR UMT partner companies in Malaysia**. I enjoy building models from scratch to understand how they work, and I want to learn in an international team environment.
+I am an AI undergraduate at FPT University. I enjoy building models from scratch to understand how they work, and I like learning in international, collaborative team environments.
 
-- **Target roles:** AI/ML Engineer · Deep Learning Engineer · Computer Vision Engineer · Data Scientist
+- **Roles I am interested in:** AI/ML Engineer · Deep Learning Engineer · Computer Vision Engineer · Data Scientist
 - **Interests:** computer vision and deep learning for sports analytics (badminton, football) and 2D-to-3D image reconstruction
 - **Long-term:** Embodied AI, VLA models, World Models
 
