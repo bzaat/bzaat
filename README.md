@@ -6,6 +6,7 @@
 
 <p align="center">
   <a href="https://www.linkedin.com/in/khanh-nguyen-pham-nguyen-7b822b371"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white"></a>
+  <a href="https://bzaat.github.io/bzaat/"><img alt="Portfolio" src="https://img.shields.io/badge/Portfolio-1f5fbf?logo=githubpages&logoColor=white"></a>
   <a href="mailto:nguyentvvn12@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white"></a>
 </p>
 
@@ -56,4 +57,4 @@ AITA Lab reading group on federated learning (10/2025–02/2026): reviewed and p
 
 ## Contact
 
-Email: nguyentvvn12@gmail.com · [LinkedIn](https://www.linkedin.com/in/khanh-nguyen-pham-nguyen-7b822b371)
+Portfolio: [bzaat.github.io/bzaat](https://bzaat.github.io/bzaat/) · Email: nguyentvvn12@gmail.com · [LinkedIn](https://www.linkedin.com/in/khanh-nguyen-pham-nguyen-7b822b371)
