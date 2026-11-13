@@ -23,13 +23,15 @@ I am an AI undergraduate at FPT University. I enjoy building models from scratch
 ### [ResNet-50 Image Classification (PyTorch)](https://github.com/bzaat/pytorch-resnet50v1-implementation)
 ResNet-50 built manually with `torch.nn`, used to compare **training from scratch vs. transfer learning** on the Oxford-IIIT Pet dataset (37 breeds, ~3.7k images).
 
-| Setup | Epochs | Test accuracy |
+| Setup | Epochs | Test accuracy (mean ± std, 3 seeds) |
 |---|---|---|
-| ResNet-50 from scratch | 50 | ~36% |
-| ImageNet-pretrained, fine-tuned (layer4 + new head) | 10 | ~93% |
+| ResNet-50 from scratch, 37 breeds | 50 | 32.0 ± 1.1% |
+| ImageNet-pretrained, fine-tuned (layer4 + new head), 37 breeds | 10 | 92.4 ± 0.3% |
+| ImageNet-pretrained, fine-tuned, cat vs dog | 10 | 99.7 ± 0.1% |
 
-Takeaway: a large un-pretrained network overfits a small dataset, while a pretrained backbone reaches high accuracy in very few epochs.
-Also includes: custom Dataset, augmentation, cosine LR with weight decay, TensorBoard logging with per-epoch confusion matrices, resumable checkpoints, `uv` setup and a Dockerfile.
+The checkpoint is chosen on a held-out validation split (20% of trainval); the official test split is evaluated only once, after training.
+Takeaway: the from-scratch model reaches 73% train accuracy but only 32% on test, so it overfits the small dataset, while a pretrained backbone reaches high accuracy in a few epochs.
+Also includes: custom Dataset, augmentation, cosine LR with weight decay, TensorBoard logging, resumable checkpoints (with RNG state), multi-seed aggregation scripts, `uv` setup and a Dockerfile.
 
 **Stack:** PyTorch · Transfer Learning · Computer Vision
 

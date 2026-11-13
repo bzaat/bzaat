@@ -83,11 +83,12 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:14px;border-top:1px soli
 <p class="meta">PyTorch · Oxford-IIIT Pet (37 breeds, ~3.7k images)</p>
 <p>ResNet-50 built manually with <code>torch.nn</code> to study what happens when a large network is trained on little data.</p>
 <table>
-<tr><th>Setup</th><th>Epochs</th><th>Test accuracy</th></tr>
-<tr><td>From scratch</td><td>50</td><td>~36%</td></tr>
-<tr><td>ImageNet-pretrained, fine-tuned (layer4 + new head)</td><td>10</td><td>~93%</td></tr>
+<tr><th>Setup</th><th>Epochs</th><th>Test accuracy (mean ± std, 3 seeds)</th></tr>
+<tr><td>From scratch, 37 breeds</td><td>50</td><td>32.0 ± 1.1%</td></tr>
+<tr><td>ImageNet-pretrained, fine-tuned (layer4 + new head), 37 breeds</td><td>10</td><td>92.4 ± 0.3%</td></tr>
+<tr><td>ImageNet-pretrained, fine-tuned, cat vs dog</td><td>10</td><td>99.7 ± 0.1%</td></tr>
 </table>
-<p>Takeaway: the un-pretrained model overfits the small dataset, while a pretrained backbone reaches high accuracy in a few epochs. The pipeline includes a custom Dataset, augmentation, cosine LR with weight decay, TensorBoard logging with per-epoch confusion matrices, resumable checkpoints, a <code>uv</code> setup and a Dockerfile.</p>
+<p>The checkpoint is chosen on a held-out validation split (20% of trainval), and the official test split is evaluated only once, after training. Takeaway: the from-scratch model reaches 73% train accuracy but only 32% on test, so it overfits the small dataset, while a pretrained backbone reaches high accuracy in a few epochs. The pipeline includes a custom Dataset, augmentation, cosine LR with weight decay, TensorBoard logging, resumable checkpoints, multi-seed aggregation, a <code>uv</code> setup and a Dockerfile.</p>
 <div class="chips"><span class="chip">PyTorch</span><span class="chip">Transfer learning</span><span class="chip">Computer vision</span></div>
 <p><a href="https://github.com/bzaat/pytorch-resnet50v1-implementation">View on GitHub</a></p>
 </div>
