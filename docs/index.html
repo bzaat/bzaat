@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pham Nguyen Khanh Nguyen | AI Portfolio</title>
+<meta name="description" content="Portfolio of Pham Nguyen Khanh Nguyen, AI undergraduate at FPT University HCMC: machine learning, deep learning and computer vision projects and publications.">
+<style>
+:root{--bg:#fafaf7;--card:#fff;--ink:#1b1f24;--muted:#5b6470;--line:#e4e4de;--accent:#1f5fbf;--accent-ink:#fff;--chip:#eef2f8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101319;--card:#171b23;--ink:#e8eaee;--muted:#9aa4b2;--line:#262c37;--accent:#6ea2ff;--accent-ink:#0b1220;--chip:#1e2531}}
+:root[data-theme="dark"]{--bg:#101319;--card:#171b23;--ink:#e8eaee;--muted:#9aa4b2;--line:#262c37;--accent:#6ea2ff;--accent-ink:#0b1220;--chip:#1e2531}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+nav a{margin-left:16px;color:var(--muted);text-decoration:none;font-size:14px}
+nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1fr 180px;gap:32px;align-items:center;padding:28px 0 36px}
+.hero h1{font-size:clamp(28px,5vw,42px);line-height:1.15;margin:0 0 8px}
+.hero .role{color:var(--muted);margin:0 0 16px;font-size:18px}
+.hero img{width:180px;height:230px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{display:inline-block;padding:9px 16px;border-radius:8px;border:1px solid var(--line);text-decoration:none;color:var(--ink);background:var(--card);font-size:15px}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+section{padding:28px 0;border-top:1px solid var(--line)}
+h2{font-size:22px;margin:0 0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+.card h3{margin:0 0 6px;font-size:18px}
+.meta{color:var(--muted);font-size:14px;margin:0 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{background:var(--chip);border-radius:999px;padding:2px 10px;font-size:13px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
+th{color:var(--muted);font-weight:600}
+ul{margin:6px 0;padding-left:20px}
+dl{display:grid;grid-template-columns:150px 1fr;gap:8px 16px;margin:0}
+dt{color:var(--muted)} dd{margin:0}
+footer{padding:28px 0 48px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media (max-width:640px){.hero{grid-template-columns:1fr}.hero img{order:-1;width:120px;height:154px}dl{grid-template-columns:1fr}nav{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><strong>Khanh Nguyen</strong>
+<nav><a href="#projects">Projects</a><a href="#publications">Publications</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav></header>
+
+<div class="hero">
+<div>
+<h1>Pham Nguyen Khanh Nguyen</h1>
+<p class="role">AI undergraduate · Machine Learning · Deep Learning · Computer Vision</p>
+<p>FPT University, Ho Chi Minh City (Bachelor of AI, expected 05/2028). I build models from scratch to understand how they work, and I am looking for an <strong>11-week OJT internship (Feb–Apr 2027)</strong> with TAR UMT partner companies in Malaysia.</p>
+<div class="btns">
+<a class="btn primary" href="Pham_Nguyen_Khanh_Nguyen_CV.pdf">Download CV (PDF)</a>
+<a class="btn" href="https://github.com/bzaat">GitHub</a>
+<a class="btn" href="https://www.linkedin.com/in/khanh-nguyen-pham-nguyen-7b822b371">LinkedIn</a>
+<a class="btn" href="mailto:nguyentvvn12@gmail.com">Email</a>
+</div>
+</div>
+<img src="photo.jpg" alt="Portrait of Pham Nguyen Khanh Nguyen">
+</div>
+
+<section id="about">
+<h2>Focus</h2>
+<dl>
+<dt>Target roles</dt><dd>AI/ML Engineer · Deep Learning Engineer · Computer Vision Engineer · Data Scientist</dd>
+<dt>Interests</dt><dd>Computer vision and deep learning for sports analytics (badminton, football); 2D-to-3D image reconstruction</dd>
+<dt>Long-term</dt><dd>Embodied AI, VLA models, World Models</dd>
+</dl>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<div class="card">
+<h3>ResNet-50 from scratch vs. transfer learning</h3>
+<p class="meta">PyTorch · Oxford-IIIT Pet (37 breeds, ~3.7k images)</p>
+<p>ResNet-50 built manually with <code>torch.nn</code> to study what happens when a large network is trained on little data.</p>
+<table>
+<tr><th>Setup</th><th>Epochs</th><th>Test accuracy</th></tr>
+<tr><td>From scratch</td><td>50</td><td>~39%</td></tr>
+<tr><td>ImageNet-pretrained, fine-tuned (layer4 + new head)</td><td>10</td><td>~93%</td></tr>
+</table>
+<p>Takeaway: the un-pretrained model overfits the small dataset, while a pretrained backbone reaches high accuracy in a few epochs. The pipeline includes a custom Dataset, augmentation, cosine LR with weight decay, TensorBoard logging with per-epoch confusion matrices, resumable checkpoints, a <code>uv</code> setup and a Dockerfile.</p>
+<div class="chips"><span class="chip">PyTorch</span><span class="chip">Transfer learning</span><span class="chip">Computer vision</span></div>
+<p><a href="https://github.com/bzaat/pytorch-resnet50v1-implementation">View on GitHub</a></p>
+</div>
+
+<div class="card">
+<h3>Melbourne housing price prediction</h3>
+<p class="meta">Python · 10,480 cleaned transactions</p>
+<p>Seven regression models compared with 5-fold cross-validation on log-price, plus an ablation of suburb-level target encoding with a shuffled-suburb leakage control and SHAP interpretation. XGBoost and LightGBM reached R² = 0.843; suburb encoding raised Random Forest test R² from 0.815 to 0.835 (paper values).</p>
+<div class="chips"><span class="chip">Scikit-learn</span><span class="chip">XGBoost</span><span class="chip">LightGBM</span><span class="chip">SHAP</span><span class="chip">SQL</span></div>
+<p><a href="https://github.com/bzaat/Real-Estate-Price-Analysis">View on GitHub</a></p>
+</div>
+</section>
+
+<section id="publications">
+<h2>Publications</h2>
+<div class="card">
+<h3>The Impact of Suburb-Level Encoding on Melbourne Housing Price Prediction</h3>
+<p class="meta">SCI-2026, 8th Int. Conf. on Smart Computing and Informatics · First author · Accepted / under publication</p>
+<p><a href="https://github.com/bzaat/Real-Estate-Price-Analysis/blob/main/Realestate%20(3).pdf">Accepted manuscript (PDF)</a></p>
+</div>
+<div class="card">
+<h3>Uncertainty-Triggered Active Sensing for UAV Maritime Rescue Prioritization under Wave Occlusion</h3>
+<p class="meta">IECON 2026 · Third author · Accepted / under publication</p>
+<p>Simulation study: a risk-aware victim-ranking score raised worst-case survival from 0.16 to 0.25 over a distance-based router (500 Monte Carlo trials), and uncertainty-triggered verification cut false-alarm visits from 60.5% to 35%.</p>
+<p><a href="https://drive.google.com/file/d/1FCH_cXJ0TVkZ_ojBMmjDJuSu9dBFo4y0/view?usp=sharing">Paper (PDF)</a></p>
+</div>
+</section>
+
+<section id="skills">
+<h2>Skills and activity</h2>
+<dl>
+<dt>Core areas</dt><dd>Machine Learning, Deep Learning, Computer Vision, Predictive Modeling, Data Analysis</dd>
+<dt>Languages</dt><dd>Python, C (basic), SQL, LaTeX</dd>
+<dt>Tools</dt><dd>PyTorch, Scikit-learn, OpenCV, Git/GitHub, Linux, Bash, uv, Docker</dd>
+<dt>Spoken languages</dt><dd>Vietnamese (native), English (professional working proficiency)</dd>
+<dt>Lab activity</dt><dd>AITA Lab reading group on federated learning (10/2025–02/2026): reviewed and presented papers</dd>
+</dl>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<p>Email: <a href="mailto:nguyentvvn12@gmail.com">nguyentvvn12@gmail.com</a> · <a href="https://www.linkedin.com/in/khanh-nguyen-pham-nguyen-7b822b371">LinkedIn</a> · <a href="https://github.com/bzaat">GitHub</a> · Ho Chi Minh City, Vietnam</p>
+</section>
+</div>
+<footer><div class="wrap">© Pham Nguyen Khanh Nguyen</div></footer>
+</body>
+</html>
