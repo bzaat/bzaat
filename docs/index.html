@@ -88,7 +88,19 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:14px;border-top:1px soli
 <tr><td>ImageNet-pretrained, fine-tuned (layer4 + new head), 37 breeds</td><td>10</td><td>92.4 ± 0.3%</td></tr>
 <tr><td>ImageNet-pretrained, fine-tuned, cat vs dog</td><td>10</td><td>99.7 ± 0.1%</td></tr>
 </table>
-<p>The checkpoint is chosen on a held-out validation split (20% of trainval), and the official test split is evaluated only once, after training. Takeaway: the from-scratch model reaches 73% train accuracy but only 32% on test, so it overfits the small dataset, while a pretrained backbone reaches high accuracy in a few epochs. The pipeline includes a custom Dataset, augmentation, cosine LR with weight decay, TensorBoard logging, resumable checkpoints, multi-seed aggregation, a <code>uv</code> setup and a Dockerfile.</p>
+<p class="meta">Official test split (3,669 images). The checkpoint is chosen on a held-out validation split (20% of trainval); the test split is evaluated only once, after training.</p>
+<div class="figs">
+<figure><a href="img/resnet_val_accuracy.png"><img src="img/resnet_val_accuracy.png" alt="Validation accuracy of ResNet-50 from scratch vs pretrained, mean over 3 seeds" loading="lazy"></a><figcaption>Validation accuracy, mean ± std over 3 seeds.</figcaption></figure>
+<figure><a href="img/resnet_confusion_pretrained.png"><img src="img/resnet_confusion_pretrained.png" alt="Normalised confusion matrix of the pretrained model on the test split" loading="lazy"></a><figcaption>Pretrained model, test confusion matrix (seed 42). Most errors are between similar breeds.</figcaption></figure>
+</div>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Bottleneck residual blocks written from scratch, without <code>torchvision.models</code>.</li>
+<li>Custom <code>Dataset</code> that parses the official annotation files and supports 37-breed or cat-vs-dog labels.</li>
+<li>Clean evaluation: stratified train/validation split, test set used once, 3 seeds reported as mean ± std.</li>
+<li>Reproducible runs: seeds, <code>config.json</code>, logs, TensorBoard, resumable checkpoints and a <code>uv</code>-locked environment.</li>
+</ul>
+<p>Takeaway: with only ~3.7k images, training ResNet-50 from scratch on this dataset does not work well (train accuracy 73% vs. 32% test), while a pretrained backbone reaches ~92% in 10 epochs. This is a conclusion for this setup, not a general rule.</p>
 <div class="chips"><span class="chip">PyTorch</span><span class="chip">Transfer learning</span><span class="chip">Computer vision</span></div>
 <p><a href="https://github.com/bzaat/pytorch-resnet50v1-implementation">View on GitHub</a></p>
 </div>
