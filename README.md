@@ -100,7 +100,7 @@ Comparison of 7 regression models with suburb-level encoding. XGBoost and LightG
 **Stack:** Python · Scikit-learn · XGBoost · LightGBM · SHAP
 
 ### [Badminton Singles Analytics](https://github.com/bzaat/Badminton_Project) (in progress)
-Hit detection, shot-type classification and court-space movement features on 12 professional singles matches (BFMD dataset), evaluated leave-one-match-out. Hit detection F1 0.737 (±2 frames); shot-type macro F1 0.710 over 12 classes (majority baseline 0.034). A Faster R-CNN detector for players and the shuttle is the next stage.
+Hit detection, shot-type classification and court-space movement features on 12 professional singles matches (BFMD dataset), evaluated leave-one-match-out. Hit detection F1 0.736 (±2 frames); shot-type macro F1 0.707 over 12 classes (majority baseline 0.034). A Faster R-CNN detector for players and the shuttle is the next stage.
 
 **Stack:** Python · OpenCV · Scikit-learn · PyTorch
 

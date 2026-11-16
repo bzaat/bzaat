@@ -253,7 +253,7 @@ export const projects: Project[] = [
     status: "In progress",
     summary:
       "Hit detection, shot-type classification and court-space movement features for 12 professional singles matches, evaluated leave-one-match-out. A Faster R-CNN detector is the next stage.",
-    headline: { value: "0.710", label: "macro F1, 12 shot types (majority baseline 0.034)" },
+    headline: { value: "0.707", label: "macro F1, 12 shot types (majority baseline 0.034)" },
     tags: ["OpenCV", "Homography", "COCO-17 pose", "scikit-learn", "Faster R-CNN", "pytest"],
     problem: [
       "12 matches, 9 players and 4 tournaments. One player appears in 7 matches, so frame-level random splits would leak.",
@@ -285,6 +285,10 @@ export const projects: Project[] = [
         body: "Thresholds and weights are chosen on 11 matches and tested on the held-out one. Design exploration used 3 matches; the 9 never-inspected matches scored higher.",
       },
       {
+        title: "A second tracker on raw video",
+        body: "TrackNetV3 run on a 50 s clip agrees with the dataset's shuttle track to a median of 2.2 px; a one-frame shift gives 10.5 / 11.1 px, so the alignment is exact. The same check showed the dataset README's shuttle-centre definition was off by 5.12 px, which was fixed in the analysis and in the detector's labels.",
+      },
+      {
         title: "Small-object detector design",
         body: "Native 720p input, smallest anchor 16 px instead of 32, flips and colour jitter only, because random crops cut the shuttle out.",
       },
@@ -301,10 +305,10 @@ export const projects: Project[] = [
         rows: [
           { cells: ["Pose only (reference)", "0.232", "0.376", "0.287"] },
           { cells: ["Shuttle only", "0.701", "0.679", "0.690"] },
-          { cells: ["Shuttle + wrist rules", "0.770", "0.680", "0.723"] },
-          { cells: ["Logistic regression", "0.759", "0.716", "0.737"], best: true },
+          { cells: ["Shuttle + wrist rules", "0.757", "0.683", "0.718"] },
+          { cells: ["Logistic regression", "0.757", "0.716", "0.736"], best: true },
         ],
-        note: "Serves are the main failure (recall 0.126) because the shuttle starts from rest. Recall excluding serves is 0.768.",
+        note: "Serves are the main failure (recall 0.133) because the shuttle starts from rest. Recall excluding serves is 0.768.",
       },
       {
         caption: "Shot-type classification, 12 classes, held-out matches pooled",
@@ -315,10 +319,10 @@ export const projects: Project[] = [
         ],
         rows: [
           { cells: ["Majority class", "0.254", "0.034"] },
-          { cells: ["Logistic regression", "0.737", "0.647 [0.601, 0.677]"] },
-          { cells: ["Gradient-boosted trees", "0.792", "0.710 [0.662, 0.738]"], best: true },
+          { cells: ["Logistic regression", "0.736", "0.646 [0.601, 0.676]"] },
+          { cells: ["Gradient-boosted trees", "0.793", "0.707 [0.661, 0.737]"], best: true },
         ],
-        note: "Confidence intervals from a match-level bootstrap. End to end, 48.2% of annotated hits are both detected and correctly classified.",
+        note: "Confidence intervals from a match-level bootstrap. End to end, 48.4% of annotated hits are both detected and correctly classified.",
       },
     ],
     limitations:
