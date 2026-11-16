@@ -22,31 +22,6 @@ I'm an AI undergraduate at FPT University, Ho Chi Minh City (B.Sc. Artificial In
 - **Long term:** embodied AI, vision-language-action (VLA) models, world models
 - **Open to:** AI / deep learning internships, Feb–Apr 2027 (11-week OJT, Malaysia)
 
-## Concept of the Day & GitHub Stats
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/bzaat/bzaat/main/assets/card-dark.svg">
-    <img src="https://raw.githubusercontent.com/bzaat/bzaat/main/assets/card-light.svg" width="49%" alt="Machine-learning concept of the day with live GitHub metrics for bzaat, refreshed every 12 hours.">
-  </picture>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/bzaat/bzaat/main/assets/records-dark.svg">
-    <img src="https://raw.githubusercontent.com/bzaat/bzaat/main/assets/records-light.svg" width="49%" alt="GitHub Records: public repositories, stars, followers, contributions in the last year, and most-used languages for bzaat.">
-  </picture>
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com/?user=bzaat&hide_border=true&border_radius=14&background=0B0C10&stroke=1A472A&ring=2ECC71&fire=2ECC71&currStreakNum=C5C6C7&sideNums=C5C6C7&currStreakLabel=2ECC71&sideLabels=8F989E&dates=8F989E">
-    <img width="60%" alt="GitHub contribution streak for bzaat" src="https://streak-stats.demolab.com/?user=bzaat&hide_border=true&border_radius=14&background=F4E4BC&stroke=2C1E12&ring=D4AF37&fire=8C6D12&currStreakNum=2C1E12&sideNums=2C1E12&currStreakLabel=8C6D12&sideLabels=5A4630&dates=5A4630">
-  </picture>
-</p>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/bzaat/bzaat/output/snake-dark.svg">
-  <img width="100%" alt="Contribution graph being eaten by a snake: gold in light mode, emerald in dark mode" src="https://raw.githubusercontent.com/bzaat/bzaat/output/snake-light.svg">
-</picture>
-
 ## Publications
 
 <table>
@@ -80,89 +55,66 @@ In simulation (500 Monte Carlo trials, evidential perception proxy), versus a di
 </tr>
 </table>
 
-## Featured Projects
+## Featured projects
 
-**[ResNet-50 from scratch vs. transfer learning](https://github.com/bzaat/pytorch-resnet50v1-implementation)** · PyTorch<br>
-ResNet-50 written by hand with `torch.nn` and compared against an ImageNet-pretrained backbone on Oxford-IIIT Pet (37 breeds), with a held-out validation split, a test set used once, and 3 seeds. Test accuracy: **92.4 ± 0.3%** fine-tuned in 10 epochs vs **32.0 ± 1.1%** from scratch in 50 (73% train accuracy: it overfits ~3k images). Resumable checkpoints with RNG state, TensorBoard, `uv` and Docker.
+### [ResNet-50 Image Classification (PyTorch)](https://github.com/bzaat/pytorch-resnet50v1-implementation)
+ResNet-50 built manually with `torch.nn`, used to compare **training from scratch vs. transfer learning** on the Oxford-IIIT Pet dataset (37 breeds, ~3.7k images).
 
-**[Badminton singles analytics](https://github.com/bzaat/Badminton_Project)** · OpenCV, scikit-learn, PyTorch · *in progress*<br>
-Hit detection, shot-type classification and court-space movement features on 12 professional matches (BFMD), evaluated leave-one-match-out: hit detection F1 0.737 (±2 frames), shot-type macro F1 0.710 over 12 classes (majority baseline 0.034). A Faster R-CNN detector for the players and the ~10 px shuttle is next.
+| Setup | Epochs | Test accuracy (mean ± std, 3 seeds) |
+|---|---|---|
+| ResNet-50 from scratch, 37 breeds | 50 | 32.0 ± 1.1% |
+| ImageNet-pretrained, fine-tuned (layer4 + new head), 37 breeds | 10 | **92.4 ± 0.3%** |
+| ImageNet-pretrained, fine-tuned, cat vs dog | 10 | 99.7 ± 0.1% |
 
-**[Melbourne housing price prediction](https://github.com/bzaat/Real-Estate-Price-Analysis)** · scikit-learn, XGBoost, LightGBM, SHAP<br>
-The code behind the SCI-2026 paper: 7 regression models, leakage-safe suburb target encoding, a shuffled-suburb control and SHAP attribution.
-
-<details>
-<summary><b>Result figures</b></summary>
-<br>
 <table>
 <tr>
 <td width="50%"><img src="docs/img/resnet_val_accuracy.png" alt="Validation accuracy of ResNet-50 from scratch vs pretrained, mean over 3 seeds"></td>
 <td width="50%"><img src="docs/img/resnet_confusion_pretrained.png" alt="Normalised confusion matrix of the pretrained model on the test split"></td>
 </tr>
 <tr>
-<td>ResNet-50: validation accuracy, mean ± std over 3 seeds.</td>
+<td>Validation accuracy, mean ± std over 3 seeds.</td>
 <td>Pretrained model, test confusion matrix (seed 42). Most errors are between similar breeds.</td>
 </tr>
+</table>
+
+The checkpoint is chosen on a held-out validation split (20% of trainval); the official test split is evaluated only once, after training.
+Takeaway: the from-scratch model reaches 73% train accuracy but only 32% on test, so it overfits the small dataset, while a pretrained backbone reaches high accuracy in a few epochs.
+Also includes: custom Dataset, augmentation, cosine LR with weight decay, TensorBoard logging, resumable checkpoints (with RNG state), multi-seed aggregation scripts, `uv` setup and a Dockerfile.
+
+**Stack:** PyTorch · Transfer Learning · Computer Vision
+
+### [Melbourne Housing Price Prediction](https://github.com/bzaat/Real-Estate-Price-Analysis)
+Comparison of 7 regression models with suburb-level encoding. XGBoost and LightGBM reached R² = 0.843 (log-price, 5-fold CV); suburb encoding raised Random Forest test R² from 0.815 to 0.835, checked with a shuffled-suburb control and SHAP.
+
+<table>
 <tr>
 <td width="50%"><img src="docs/img/melb_model_comparison.png" alt="5-fold CV R2 of seven regression models"></td>
 <td width="50%"><img src="docs/img/melb_suburb_ablation.png" alt="Random Forest suburb ablation and shuffled-suburb control"></td>
 </tr>
 <tr>
-<td>Melbourne: 5-fold CV R² of the 7 models (re-computed from the repo code).</td>
+<td>5-fold CV R² of the 7 models (re-computed from the repo code).</td>
 <td>Random Forest without / with / shuffled suburb (re-computed; the paper reports 0.815 / 0.835 / 0.810 test R²).</td>
 </tr>
 </table>
-</details>
 
-<details>
-<summary><b>🧳 Open the Research Case (methods and roadmap)</b></summary>
-<br>
-<img src="https://raw.githubusercontent.com/bzaat/bzaat/main/assets/banner-fantastic-beasts.svg" width="100%" alt="A leather suitcase unlatches and spills gold coins, then a field journal inks in, listing the methods behind each project.">
+**Stack:** Python · Scikit-learn · XGBoost · LightGBM · SHAP
 
-| Topic | Idea | In my work | Data | Status |
-|---|---|---|---|---|
-| **Small-object detection** | Find tiny targets in large frames | Faster R-CNN detector for two players and a ~10 px shuttlecock | BFMD, 12 BWF singles matches | In progress |
-| **Evidential uncertainty** | Know when the model is unsure | Evidential deep learning: epistemic uncertainty triggers a verification descent | Monte Carlo maritime rescue simulation | Done, IECON 2026 |
-| **CNNs from scratch** | Build it layer by layer to understand it | ResNet-50 written layer by layer in PyTorch | Oxford-IIIT Pet, 37 breeds | Done, 92.4% fine-tuned |
-| **Target encoding** | Turn location into a predictive signal | Suburb-level target encoding with a shuffled control and SHAP | Melbourne housing, 10,480 sales | Done, SCI-2026 |
-| **Vision Transformers** | Attention instead of convolution | Vision Transformers | — | Planned |
-| **Embodied AI** | Perception that drives action | Embodied AI and VLA models: perception that turns into action | — | Planned |
+### [Badminton Singles Analytics](https://github.com/bzaat/Badminton_Project) (in progress)
+Hit detection, shot-type classification and court-space movement features on 12 professional singles matches (BFMD dataset), evaluated leave-one-match-out. Hit detection F1 0.737 (±2 frames); shot-type macro F1 0.710 over 12 classes (majority baseline 0.034). A Faster R-CNN detector for players and the shuttle is the next stage.
 
-<sub>Done: published or shipped. In progress: current work. Planned: what I'm learning next.</sub>
-</details>
+**Stack:** Python · OpenCV · Scikit-learn · PyTorch
 
-## Tech Stack
+## Skills
 
-**Languages**<br>
-<img alt="Python" src="https://img.shields.io/badge/Python-2C1E12?style=flat-square&logo=python&logoColor=D4AF37">
-<img alt="SQL" src="https://img.shields.io/badge/SQL-2C1E12?style=flat-square&logo=sqlite&logoColor=D4AF37">
-<img alt="C (basic)" src="https://img.shields.io/badge/C_(basic)-2C1E12?style=flat-square&logo=c&logoColor=D4AF37">
-<img alt="LaTeX" src="https://img.shields.io/badge/LaTeX-2C1E12?style=flat-square&logo=latex&logoColor=D4AF37">
+- **Core areas:** Machine Learning, Deep Learning, Computer Vision, Predictive Modeling, Data Analysis
+- **Languages:** Python, C (basic), SQL, LaTeX
+- **Tools:** PyTorch, Scikit-learn, OpenCV, Git/GitHub, Linux, Bash, uv, Docker
+- **Spoken languages:** Vietnamese (native), English (professional working proficiency)
 
-**Machine learning & vision**<br>
-<img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-1A472A?style=flat-square&logo=pytorch&logoColor=2ECC71">
-<img alt="scikit-learn" src="https://img.shields.io/badge/scikit--learn-1A472A?style=flat-square&logo=scikitlearn&logoColor=2ECC71">
-<img alt="OpenCV" src="https://img.shields.io/badge/OpenCV-1A472A?style=flat-square&logo=opencv&logoColor=2ECC71">
-<img alt="NumPy" src="https://img.shields.io/badge/NumPy-1A472A?style=flat-square&logo=numpy&logoColor=2ECC71">
-<img alt="pandas" src="https://img.shields.io/badge/pandas-1A472A?style=flat-square&logo=pandas&logoColor=2ECC71">
-<img alt="XGBoost" src="https://img.shields.io/badge/XGBoost-1A472A?style=flat-square">
-<img alt="LightGBM" src="https://img.shields.io/badge/LightGBM-1A472A?style=flat-square">
-<img alt="SHAP" src="https://img.shields.io/badge/SHAP-1A472A?style=flat-square">
+## Lab activity
 
-**Tools**<br>
-<img alt="Docker" src="https://img.shields.io/badge/Docker-1E6B7B?style=flat-square&logo=docker&logoColor=A8DADC">
-<img alt="Linux" src="https://img.shields.io/badge/Linux-1E6B7B?style=flat-square&logo=linux&logoColor=A8DADC">
-<img alt="Git" src="https://img.shields.io/badge/Git-1E6B7B?style=flat-square&logo=git&logoColor=A8DADC">
-<img alt="uv" src="https://img.shields.io/badge/uv-1E6B7B?style=flat-square&logo=uv&logoColor=A8DADC">
-<img alt="Jupyter" src="https://img.shields.io/badge/Jupyter-1E6B7B?style=flat-square&logo=jupyter&logoColor=A8DADC">
-<img alt="Streamlit" src="https://img.shields.io/badge/Streamlit-1E6B7B?style=flat-square&logo=streamlit&logoColor=A8DADC">
-<img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub_Actions-1E6B7B?style=flat-square&logo=githubactions&logoColor=A8DADC">
+AITA Lab reading group on federated learning (10/2025–02/2026): reviewed and presented papers.
 
-Also: AITA Lab reading group on federated learning (10/2025–02/2026) · Vietnamese (native), English (professional working proficiency)
+## Contact
 
----
-
-<p align="center">
-  <i>Thanks for visiting.</i><br>
-  <sub>Email: <a href="mailto:nguyentvvn12@gmail.com">nguyentvvn12@gmail.com</a> · <a href="https://www.linkedin.com/in/khanh-nguyen-pham-nguyen-7b822b371">LinkedIn</a> · <a href="https://bzaat.github.io/bzaat/">Portfolio</a> · Ho Chi Minh City, Vietnam</sub>
-</p>
+Portfolio: [bzaat.github.io/bzaat](https://bzaat.github.io/bzaat/) · Email: nguyentvvn12@gmail.com · [LinkedIn](https://www.linkedin.com/in/khanh-nguyen-pham-nguyen-7b822b371) · Ho Chi Minh City, Vietnam
