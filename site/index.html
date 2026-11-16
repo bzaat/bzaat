@@ -4,17 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark light" />
-    <meta name="theme-color" content="#0E131A" />
+    <meta name="theme-color" content="#090A0F" />
     <script>
       // Set the theme before first paint: saved choice, else the OS setting.
       (function () {
         var t = null;
         try { t = localStorage.getItem("theme"); } catch (e) {}
-        if (t !== "light" && t !== "dark") {
-          t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        if (t === "light") t = "auror";
+        if (t === "dark") t = "darkarts";
+        if (t !== "auror" && t !== "darkarts" && t !== "beasts") {
+          t = window.matchMedia("(prefers-color-scheme: light)").matches ? "auror" : "darkarts";
         }
         document.documentElement.dataset.theme = t;
-        document.querySelector('meta[name="theme-color"]').setAttribute("content", t === "light" ? "#F4F6F9" : "#0E131A");
+        var c = { auror: "#F6EEDB", darkarts: "#090A0F", beasts: "#2A1A16" }[t];
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", c);
       })();
     </script>
     <title>Pham Nguyen Khanh Nguyen | Applied ML & Computer Vision</title>

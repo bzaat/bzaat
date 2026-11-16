@@ -29,7 +29,7 @@ export function Tag({ children }: { children: ReactNode }) {
 export function SectionHeading({ id, title, intro }: { id: string; title: string; intro?: string }) {
   return (
     <div className="mb-10 grid gap-3 border-t border-line pt-6 md:grid-cols-12">
-      <h2 id={id} className="text-2xl font-semibold tracking-tight md:col-span-4 md:text-3xl">
+      <h2 id={id} className="glow-title font-display text-2xl font-semibold md:col-span-4 md:text-3xl">
         {title}
       </h2>
       {intro && <p className="max-w-[62ch] text-muted md:col-span-7 md:col-start-6">{intro}</p>}

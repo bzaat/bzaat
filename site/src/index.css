@@ -1,68 +1,98 @@
 @import "tailwindcss";
 
 /*
-  Tokens: "instrument panel" palette.
-  bg      #0E131A  blue-slate obsidian (page)
-  raised  #151C26  panels, drawer
-  line    #263241  hairlines, borders
-  text    #E7ECF2  primary text      (15.6:1 on bg)
-  muted   #A3AFBD  secondary text    (8.3:1 on bg)
-  amber   #F0B44C  readout accent    (10.2:1 on bg) — metrics, transfer curve, primary action
-  steel   #8FB3D9  second data series / links (8.6:1 on bg)
+  Three Wizarding skins on one set of tokens. <html data-theme="auror|darkarts|beasts">
+  is set before first paint by index.html and switched by the theme dock.
+
+  Text contrast (on bg / raised / sunken), all WCAG AA or better:
+    auror     text 15.2  muted 7.4  accent 5.6  link 5.9  ok 5.5   strong border 3.5
+    darkarts  text 13.1  muted 7.6  accent 9.4  link 11.2 ok 9.4   strong border 4.1
+    beasts    text 13.5  muted 8.6  accent 7.2  link 8.2  ok 9.0   strong border 3.9
+  --color-gold / --color-glow are decorative only (particles, glows, borders), never text.
 */
 @theme {
-  --color-bg: #0e131a;
-  --color-raised: #151c26;
-  --color-sunken: #0a0e13;
-  --color-line: #263241;
-  --color-line-strong: #3a4a5e;
-  --color-text: #e7ecf2;
-  --color-muted: #a3afbd;
-  --color-amber: #f0b44c;
-  --color-amber-ink: #1c1405;
-  --color-steel: #8fb3d9;
-  --color-ok: #7fd1a8;
+  /* defaults = Dark Arts, so a page without data-theme is still dark and legible */
+  --color-bg: #090a0f;
+  --color-raised: #0f1419;
+  --color-sunken: #050608;
+  --color-line: #1c2622;
+  --color-line-strong: #557f67;
+  --color-text: #d0d3d4;
+  --color-muted: #98a2a6;
+  --color-amber: #2ecc71;
+  --color-amber-ink: #04140a;
+  --color-steel: #9cc9e0;
+  --color-ok: #2ecc71;
+  --color-gold: #2ecc71;
+  --color-glow: #1a472a;
 
-  --font-sans: "Sora Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cinzel Variable", "Trajan Pro", Georgia, serif;
+  --font-title: "Playfair Display Variable", Georgia, serif;
   --font-mono: "Spline Sans Mono Variable", ui-monospace, "Cascadia Mono", monospace;
 }
 
-/*
-  Light theme: tonal counterparts, not an inversion. Contrast on bg #F4F6F9:
-  text 16.5:1, muted 7.0:1, amber 5.7:1 (white on amber 6.2:1), steel 6.6:1,
-  ok 5.6:1, line-strong 3.4:1 (UI boundary).
-  Applied by <html data-theme="light"> (set in index.html before paint), or by
-  the OS setting when scripts are off.
-*/
-:root[data-theme="light"] {
-  --color-bg: #f4f6f9;
-  --color-raised: #ffffff;
-  --color-sunken: #eaeef3;
-  --color-line: #d9dfe7;
-  --color-line-strong: #7a8798;
-  --color-text: #111821;
-  --color-muted: #4a5565;
-  --color-amber: #8f5200;
+/* The Auror Office: parchment, espresso ink, Patronus silver-blue, scholarly gold */
+:root[data-theme="auror"] {
+  --color-bg: #f6eedb;
+  --color-raised: #fbf6ea;
+  --color-sunken: #efe3c8;
+  --color-line: #decfae;
+  --color-line-strong: #8f7b52;
+  --color-text: #231709;
+  --color-muted: #5b4a32;
+  --color-amber: #7a5806;
   --color-amber-ink: #ffffff;
-  --color-steel: #285a8c;
-  --color-ok: #17704a;
+  --color-steel: #2b5f86;
+  --color-ok: #2e6b3f;
+  --color-gold: #c59b27;
+  --color-glow: #7fb3d5;
   color-scheme: light;
 }
+
+/* Newt's case: satchel leather, field-journal paper, Occamy teal, Niffler brass */
+:root[data-theme="beasts"] {
+  --color-bg: #2a1a16;
+  --color-raised: #3e2723;
+  --color-sunken: #1e120f;
+  --color-line: #563a33;
+  --color-line-strong: #a08374;
+  --color-text: #efe6dd;
+  --color-muted: #c8b7a6;
+  --color-amber: #d4a338;
+  --color-amber-ink: #241612;
+  --color-steel: #6cc3d0;
+  --color-ok: #9ccb8a;
+  --color-gold: #d4a338;
+  --color-glow: #16697a;
+  --font-display: "Playfair Display Variable", Georgia, serif;
+  color-scheme: dark;
+}
+
+/* No JS: follow the OS */
 @media (prefers-color-scheme: light) {
   :root:not([data-theme]) {
-    --color-bg: #f4f6f9;
-    --color-raised: #ffffff;
-    --color-sunken: #eaeef3;
-    --color-line: #d9dfe7;
-    --color-line-strong: #7a8798;
-    --color-text: #111821;
-    --color-muted: #4a5565;
-    --color-amber: #8f5200;
+    --color-bg: #f6eedb;
+    --color-raised: #fbf6ea;
+    --color-sunken: #efe3c8;
+    --color-line: #decfae;
+    --color-line-strong: #8f7b52;
+    --color-text: #231709;
+    --color-muted: #5b4a32;
+    --color-amber: #7a5806;
     --color-amber-ink: #ffffff;
-    --color-steel: #285a8c;
-    --color-ok: #17704a;
+    --color-steel: #2b5f86;
+    --color-ok: #2e6b3f;
+    --color-gold: #c59b27;
+    --color-glow: #7fb3d5;
     color-scheme: light;
   }
+}
+
+@property --fx-a {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
 }
 
 @layer base {
@@ -70,14 +100,33 @@
     color-scheme: dark;
   }
   html {
-    background: var(--color-bg);
+    background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-sans);
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     scroll-padding-top: 5rem;
     touch-action: manipulation;
-    -webkit-tap-highlight-color: rgb(240 180 76 / 0.2);
+    -webkit-tap-highlight-color: color-mix(in srgb, var(--color-amber) 25%, transparent);
+    background-attachment: fixed;
+  }
+  /* Page textures, one per skin */
+  :root[data-theme="auror"] {
+    background-image:
+      radial-gradient(ellipse 80% 60% at 25% 10%, rgb(255 255 255 / 0.55), transparent 70%),
+      radial-gradient(ellipse 120% 80% at 50% 120%, rgb(197 155 39 / 0.14), transparent 60%);
+  }
+  :root[data-theme="darkarts"] {
+    background-image:
+      radial-gradient(ellipse 70% 50% at 85% 0%, rgb(26 71 42 / 0.45), transparent 70%),
+      radial-gradient(ellipse 60% 50% at 0% 100%, rgb(26 71 42 / 0.3), transparent 70%);
+  }
+  :root[data-theme="beasts"] {
+    background-image:
+      linear-gradient(rgb(212 163 56 / 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(212 163 56 / 0.055) 1px, transparent 1px),
+      radial-gradient(ellipse 90% 70% at 70% 0%, rgb(22 105 122 / 0.28), transparent 70%);
+    background-size: 28px 28px, 28px 28px, auto;
   }
   @media (prefers-reduced-motion: no-preference) {
     html {
@@ -90,7 +139,7 @@
   body {
     min-height: 100dvh;
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.65;
   }
   ::selection {
     background: var(--color-amber);
@@ -112,10 +161,15 @@
   a {
     text-underline-offset: 0.2em;
   }
+  :root[data-theme="darkarts"] .glow-title {
+    text-shadow: 0 0 22px rgb(46 204 113 / 0.35);
+  }
+  :root[data-theme="auror"] .glow-title {
+    text-shadow: 0 1px 0 rgb(255 255 255 / 0.6);
+  }
 }
 
 @layer components {
-  /* Numbers line up in tables and readouts */
   .num {
     font-family: var(--font-mono);
     font-variant-numeric: tabular-nums;
@@ -156,7 +210,125 @@
     color: var(--color-amber);
   }
 
-  /* Project drawer (native <dialog>) */
+  /* ---------------------------------------------------------------- cards */
+  .fx-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    background-color: var(--color-raised);
+    transition:
+      box-shadow 0.35s ease,
+      border-color 0.35s ease,
+      transform 0.35s ease;
+  }
+
+  /* Auror: a Patronus light trail sweeps across, silver-blue halo */
+  :root[data-theme="auror"] .fx-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(105deg, transparent 30%, rgb(127 179 213 / 0.35) 50%, transparent 70%);
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  :root[data-theme="auror"] .fx-card:hover,
+  :root[data-theme="auror"] .fx-card:focus-visible {
+    border-color: var(--color-glow);
+    box-shadow:
+      0 0 0 1px var(--color-glow),
+      0 14px 36px -14px rgb(127 179 213 / 0.9);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :root[data-theme="auror"] .fx-card:hover::after {
+      animation: patronus-trail 1.2s ease-out;
+    }
+  }
+
+  /* Dark Arts: a glowing emerald rune border that circles the card */
+  :root[data-theme="darkarts"] .fx-card {
+    border-color: transparent;
+    background:
+      linear-gradient(var(--color-raised), var(--color-raised)) padding-box,
+      conic-gradient(from var(--fx-a), #1a472a, #2ecc71 12%, #1a472a 30%, #557f67 55%, #1a472a 80%) border-box;
+  }
+  :root[data-theme="darkarts"] .fx-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 14px;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.25;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='14'%3E%3Cg fill='none' stroke='%232ECC71' stroke-width='1.3' stroke-linecap='round'%3E%3Cpath d='M6 2v10M6 4l4 3M6 8l-3 2'/%3E%3Cpath d='M20 2v10M20 2l4 4-4 3'/%3E%3Cpath d='M34 2v10M34 6l4-3M34 6l4 4'/%3E%3Cpath d='M48 2v10M44 4l8 6'/%3E%3C/g%3E%3C/svg%3E")
+      repeat-x 8px 0;
+    transition: opacity 0.35s ease;
+  }
+  :root[data-theme="darkarts"] .fx-card:hover,
+  :root[data-theme="darkarts"] .fx-card:focus-visible {
+    box-shadow: 0 0 28px -8px rgb(46 204 113 / 0.55);
+  }
+  :root[data-theme="darkarts"] .fx-card:hover::before {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 4px rgb(46 204 113 / 0.9));
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :root[data-theme="darkarts"] .fx-card:hover {
+      animation: rune-spin 3.2s linear infinite;
+    }
+  }
+
+  /* Newt's case: satchel stitching and brass clasps on the corners */
+  :root[data-theme="beasts"] .fx-card {
+    outline: 1px dashed rgb(212 163 56 / 0.35);
+    outline-offset: -7px;
+  }
+  :root[data-theme="beasts"] .fx-card::before,
+  :root[data-theme="beasts"] .fx-card::after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    pointer-events: none;
+    border: 0 solid var(--color-gold);
+    opacity: 0.8;
+    transition:
+      transform 0.35s ease,
+      opacity 0.35s ease;
+  }
+  :root[data-theme="beasts"] .fx-card::before {
+    top: 4px;
+    left: 4px;
+    border-width: 3px 0 0 3px;
+    border-top-left-radius: 6px;
+    transform-origin: top left;
+  }
+  :root[data-theme="beasts"] .fx-card::after {
+    right: 4px;
+    bottom: 4px;
+    border-width: 0 3px 3px 0;
+    border-bottom-right-radius: 6px;
+    transform-origin: bottom right;
+  }
+  :root[data-theme="beasts"] .fx-card:hover,
+  :root[data-theme="beasts"] .fx-card:focus-visible {
+    border-color: var(--color-gold);
+    box-shadow: 0 16px 34px -18px rgb(212 163 56 / 0.75);
+  }
+  :root[data-theme="beasts"] .fx-card:hover::before,
+  :root[data-theme="beasts"] .fx-card:hover::after {
+    opacity: 1;
+    transform: scale(1.45);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :root[data-theme="beasts"] .fx-card:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  /* --------------------------------------------------------------- drawer */
   dialog.drawer {
     margin: 0 0 0 auto;
     height: 100dvh;
@@ -172,8 +344,11 @@
   dialog.drawer::backdrop {
     background: rgb(5 8 12 / 0.72);
   }
-  :root[data-theme="light"] dialog.drawer::backdrop {
-    background: rgb(17 24 33 / 0.45);
+  :root[data-theme="auror"] dialog.drawer::backdrop {
+    background: rgb(35 23 9 / 0.4);
+  }
+  :root[data-theme="beasts"] dialog.drawer::backdrop {
+    background: rgb(20 12 10 / 0.7);
   }
   @media (prefers-reduced-motion: no-preference) {
     dialog.drawer[open] {
@@ -209,6 +384,247 @@
       animation-delay: 1500ms;
     }
   }
+
+  /* Hero video: feather every edge into the page texture, and fade it out under the
+     headline so text always sits on plain background */
+  .hero-video {
+    mask-image:
+      linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.22) 34%, #000 60%, #000 92%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
+    mask-composite: intersect;
+  }
+  @media (max-width: 1023px) {
+    .hero-video {
+      mask-image:
+        linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.16) 10%, rgb(0 0 0 / 0.16) 55%, #000 78%, transparent 100%),
+        linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      mask-composite: intersect;
+    }
+  }
+}
+
+/* Theme switch: 400ms colour cross-fade (the spell ripple is drawn by SpellLayer) */
+.theme-fade,
+.theme-fade * {
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    color 0.4s ease,
+    fill 0.4s ease,
+    stroke 0.4s ease !important;
+}
+
+/* ------------------------------------------------------------ spell overlay */
+.spell-ripple {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  margin: -60px 0 0 -60px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    transparent 42%,
+    color-mix(in srgb, var(--c) 55%, transparent) 58%,
+    color-mix(in srgb, #fff 35%, transparent) 62%,
+    transparent 72%
+  );
+  box-shadow: 0 0 40px 8px color-mix(in srgb, var(--c) 30%, transparent);
+  will-change: transform, opacity;
+  animation: spell-ripple 400ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.spell-star {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  background: var(--c);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  filter: drop-shadow(0 0 3px var(--c));
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: spell-star 750ms cubic-bezier(0.15, 0.8, 0.3, 1) forwards;
+}
+.spell-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-raised);
+  color: var(--color-text);
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 20px -8px rgb(0 0 0 / 0.5);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: incantation 1.2s ease-out forwards;
+}
+
+/* ------------------------------------------------------------------ mascots */
+.mascot {
+  -webkit-tap-highlight-color: transparent;
+}
+.mascot .m-lid,
+.mascot .m-wink {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  transform: scaleY(0);
+}
+.mascot .m-coin {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+.mascot[data-act] .m-coin {
+  transform: translateY(5px) scale(0.2);
+  opacity: 0;
+}
+.mascot[data-act] .m-wink {
+  transform: scaleY(1);
+}
+.m-envelope {
+  animation: m-envelope 1.2s ease-in forwards;
+}
+.m-smoke {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: m-smoke 1.2s ease-out forwards;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mascot .m-breathe {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: m-breathe 3.4s ease-in-out infinite;
+  }
+  .mascot .m-lid {
+    animation: m-blink 5.5s ease-in-out infinite;
+  }
+  .mascot .m-tilt {
+    transform-box: fill-box;
+    transform-origin: 50% 85%;
+    animation: m-tilt 9s ease-in-out infinite;
+  }
+  .mascot .m-glow {
+    animation: m-glow 2.6s ease-in-out infinite alternate;
+  }
+  .mascot .m-tongue {
+    transform-box: fill-box;
+    transform-origin: 50% 0;
+    animation: m-tongue 4s ease-in-out infinite;
+  }
+  .mascot:hover .m-breathe {
+    animation-duration: 1.6s;
+  }
+}
+/* Chibi cast: speech bubbles, idle bounce, wand glow */
+.chibi-bubble {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  translate: -50% 0;
+  z-index: 30;
+  width: max-content;
+  max-width: 11rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.9rem;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-raised);
+  color: var(--color-text);
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  text-align: center;
+  box-shadow: 0 8px 22px -10px rgb(0 0 0 / 0.55);
+  pointer-events: none;
+}
+.chibi-bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  rotate: 45deg;
+  background: var(--color-raised);
+  border-right: 1px solid var(--color-line-strong);
+  border-bottom: 1px solid var(--color-line-strong);
+}
+.chibi-bubble-end {
+  left: auto;
+  right: 0;
+  translate: none;
+}
+.chibi-bubble-end::after {
+  left: auto;
+  right: 1.25rem;
+}
+.chibi:focus-visible {
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .chibi {
+    transform-origin: 50% 100%;
+    animation: chibi-bob 2.8s ease-in-out infinite;
+  }
+  .chibi:hover {
+    animation-duration: 1.2s;
+  }
+  .chibi[data-act] {
+    animation: chibi-hop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1);
+  }
+  .chibi .chibi-glow {
+    animation: m-glow 1.4s ease-in-out infinite alternate;
+  }
+  .chibi .chibi-peek {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: chibi-peek 4.5s ease-in-out infinite;
+  }
+}
+@keyframes chibi-bob {
+  0%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.01, 0.99);
+  }
+}
+@keyframes chibi-hop {
+  0% {
+    transform: translateY(0) scale(1.06, 0.92);
+  }
+  40% {
+    transform: translateY(-10px) scale(0.96, 1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+@keyframes chibi-peek {
+  0%,
+  55%,
+  100% {
+    transform: translateY(0);
+  }
+  65%,
+  85% {
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m-envelope,
+  .m-smoke {
+    display: none;
+  }
 }
 
 @keyframes draw {
@@ -232,5 +648,131 @@
   to {
     transform: none;
     opacity: 1;
+  }
+}
+@keyframes patronus-trail {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+@keyframes rune-spin {
+  to {
+    --fx-a: 360deg;
+  }
+}
+@keyframes spell-ripple {
+  from {
+    transform: scale(0.2);
+    opacity: 0.95;
+  }
+  to {
+    transform: scale(var(--s));
+    opacity: 0;
+  }
+}
+@keyframes spell-star {
+  0% {
+    transform: translate(0, 0) scale(var(--k)) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.15) rotate(150deg);
+    opacity: 0;
+  }
+}
+@keyframes incantation {
+  0% {
+    transform: translate(-50%, -70%);
+    opacity: 0;
+  }
+  15% {
+    transform: translate(-50%, -130%);
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -200%);
+    opacity: 0;
+  }
+}
+@keyframes m-breathe {
+  50% {
+    transform: translateY(0.6px) scale(1.025, 0.975);
+  }
+}
+@keyframes m-blink {
+  0%,
+  90%,
+  100% {
+    transform: scaleY(0);
+  }
+  94% {
+    transform: scaleY(1);
+  }
+}
+@keyframes m-tilt {
+  0%,
+  62%,
+  100% {
+    transform: rotate(0);
+  }
+  70%,
+  80% {
+    transform: rotate(-9deg);
+  }
+  88% {
+    transform: rotate(3deg);
+  }
+}
+@keyframes m-glow {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes m-tongue {
+  0%,
+  80%,
+  100% {
+    transform: scaleY(0);
+  }
+  84%,
+  90% {
+    transform: scaleY(1);
+  }
+}
+@keyframes m-envelope {
+  0% {
+    transform: translate(0, 0) rotate(-8deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-14px, 70px) rotate(14deg);
+    opacity: 0;
+  }
+}
+@keyframes m-smoke {
+  0% {
+    transform: translateY(0) scale(0.35);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-26px) scale(1.9);
+    opacity: 0;
   }
 }

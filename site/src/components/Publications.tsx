@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { Check, ChevronDown, Copy } from "lucide-react";
 import { publications, type Publication } from "../data";
 import { Ext, SectionHeading } from "./ui";
+import { castAt } from "../spells";
 
 async function copyText(text: string): Promise<boolean> {
   try {
@@ -15,8 +16,10 @@ async function copyText(text: string): Promise<boolean> {
 function PaperEntry({ p }: { p: Publication }) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
 
-  const onCopy = async () => {
+  const onCopy = async (e: MouseEvent<HTMLButtonElement>) => {
+    const btn = e.currentTarget;
     const ok = await copyText(p.bibtex);
+    if (ok) castAt(btn, "Accio BibTeX!");
     setState(ok ? "copied" : "failed");
     if (ok) window.setTimeout(() => setState("idle"), 2400);
   };
@@ -53,7 +56,7 @@ function PaperEntry({ p }: { p: Publication }) {
       </div>
 
       <div className="min-w-0 md:col-span-9">
-        <h3 id={`pub-${p.id}`} className="text-xl font-semibold leading-snug tracking-tight md:text-2xl">
+        <h3 id={`pub-${p.id}`} className="font-title text-xl font-semibold leading-snug md:text-[1.6rem]">
           {p.title}
         </h3>
         <p className="mt-2 text-sm text-muted">
