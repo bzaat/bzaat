@@ -1,176 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pham Nguyen Khanh Nguyen | AI Portfolio</title>
-<meta name="description" content="Portfolio of Pham Nguyen Khanh Nguyen, AI undergraduate at FPT University HCMC: machine learning, deep learning and computer vision projects and publications.">
-<style>
-:root{--bg:#fafaf7;--card:#fff;--ink:#1b1f24;--muted:#5b6470;--line:#e4e4de;--accent:#1f5fbf;--accent-ink:#fff;--chip:#eef2f8}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101319;--card:#171b23;--ink:#e8eaee;--muted:#9aa4b2;--line:#262c37;--accent:#6ea2ff;--accent-ink:#0b1220;--chip:#1e2531}}
-:root[data-theme="dark"]{--bg:#101319;--card:#171b23;--ink:#e8eaee;--muted:#9aa4b2;--line:#262c37;--accent:#6ea2ff;--accent-ink:#0b1220;--chip:#1e2531}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-a{color:var(--accent)}
-.wrap{max-width:880px;margin:0 auto;padding:0 16px}
-header.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
-nav a{margin-left:16px;color:var(--muted);text-decoration:none;font-size:14px}
-nav a:hover{color:var(--ink)}
-.hero{display:grid;grid-template-columns:1fr 180px;gap:32px;align-items:center;padding:28px 0 36px}
-.hero h1{font-size:clamp(28px,5vw,42px);line-height:1.15;margin:0 0 8px}
-.hero .role{color:var(--muted);margin:0 0 16px;font-size:18px}
-.hero img{width:180px;height:230px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
-.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.btn{display:inline-block;padding:9px 16px;border-radius:8px;border:1px solid var(--line);text-decoration:none;color:var(--ink);background:var(--card);font-size:15px}
-.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-section{padding:28px 0;border-top:1px solid var(--line)}
-h2{font-size:22px;margin:0 0 16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
-.card h3{margin:0 0 6px;font-size:18px}
-.meta{color:var(--muted);font-size:14px;margin:0 0 10px}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.chip{background:var(--chip);border-radius:999px;padding:2px 10px;font-size:13px}
-table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0}
-th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
-th{color:var(--muted);font-weight:600}
-.figs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
-.figs figure{margin:0}
-.figs img{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;display:block;background:#fff}
-.figs figcaption{font-size:13px;color:var(--muted);margin-top:4px}
-.facts{grid-template-columns:110px 1fr;font-size:15px;margin:10px 0}
-.split{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:center}
-.split img{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;display:block}
-ul{margin:6px 0;padding-left:20px}
-dl{display:grid;grid-template-columns:150px 1fr;gap:8px 16px;margin:0}
-dt{color:var(--muted)} dd{margin:0}
-footer{padding:28px 0 48px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
-@media (max-width:640px){.figs{grid-template-columns:1fr}.facts{grid-template-columns:1fr}.split{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.hero img{order:-1;width:120px;height:154px}dl{grid-template-columns:1fr}nav{display:none}}
-</style>
-</head>
-<body>
-<div class="wrap">
-<header class="top"><strong>Khanh Nguyen</strong>
-<nav><a href="#projects">Projects</a><a href="#research">Research</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav></header>
-
-<div class="hero">
-<div>
-<h1>Pham Nguyen Khanh Nguyen</h1>
-<p class="role">AI undergraduate · Machine Learning · Deep Learning · Computer Vision</p>
-<p>FPT University, Ho Chi Minh City (Bachelor of AI, expected 05/2028). I build models from scratch to understand how they work, and I enjoy learning in international, collaborative teams.</p>
-<div class="btns">
-<a class="btn primary" href="Pham_Nguyen_Khanh_Nguyen_CV.pdf">Download CV (PDF)</a>
-<a class="btn" href="https://github.com/bzaat">GitHub</a>
-<a class="btn" href="https://www.linkedin.com/in/khanh-nguyen-pham-nguyen-7b822b371">LinkedIn</a>
-<a class="btn" href="mailto:nguyentvvn12@gmail.com">Email</a>
-</div>
-</div>
-<img src="photo.jpg" alt="Portrait of Pham Nguyen Khanh Nguyen">
-</div>
-
-<section id="about">
-<h2>Focus</h2>
-<dl>
-<dt>Roles of interest</dt><dd>AI/ML Engineer · Deep Learning Engineer · Computer Vision Engineer · Data Scientist</dd>
-<dt>Interests</dt><dd>Computer vision and deep learning for sports analytics (badminton, football); 2D-to-3D image reconstruction</dd>
-<dt>Long-term</dt><dd>Embodied AI, VLA models, World Models</dd>
-</dl>
-</section>
-
-<section id="projects">
-<h2>Projects</h2>
-<div class="card">
-<h3>ResNet-50 from scratch vs. transfer learning</h3>
-<p class="meta">PyTorch · Oxford-IIIT Pet (37 breeds, ~3.7k images)</p>
-<p>ResNet-50 built manually with <code>torch.nn</code> to study what happens when a large network is trained on little data.</p>
-<table>
-<tr><th>Setup</th><th>Epochs</th><th>Test accuracy (mean ± std, 3 seeds)</th></tr>
-<tr><td>From scratch, 37 breeds</td><td>50</td><td>32.0 ± 1.1%</td></tr>
-<tr><td>ImageNet-pretrained, fine-tuned (layer4 + new head), 37 breeds</td><td>10</td><td>92.4 ± 0.3%</td></tr>
-<tr><td>ImageNet-pretrained, fine-tuned, cat vs dog</td><td>10</td><td>99.7 ± 0.1%</td></tr>
-</table>
-<p class="meta">Official test split (3,669 images). The checkpoint is chosen on a held-out validation split (20% of trainval); the test split is evaluated only once, after training.</p>
-<div class="figs">
-<figure><a href="img/resnet_val_accuracy.png"><img src="img/resnet_val_accuracy.png" alt="Validation accuracy of ResNet-50 from scratch vs pretrained, mean over 3 seeds" loading="lazy"></a><figcaption>Validation accuracy, mean ± std over 3 seeds.</figcaption></figure>
-<figure><a href="img/resnet_confusion_pretrained.png"><img src="img/resnet_confusion_pretrained.png" alt="Normalised confusion matrix of the pretrained model on the test split" loading="lazy"></a><figcaption>Pretrained model, test confusion matrix (seed 42). Most errors are between similar breeds.</figcaption></figure>
-</div>
-<p><strong>Highlights</strong></p>
-<ul>
-<li>Bottleneck residual blocks written from scratch, without <code>torchvision.models</code>.</li>
-<li>Custom <code>Dataset</code> that parses the official annotation files and supports 37-breed or cat-vs-dog labels.</li>
-<li>Clean evaluation: stratified train/validation split, test set used once, 3 seeds reported as mean ± std.</li>
-<li>Reproducible runs: seeds, <code>config.json</code>, logs, TensorBoard, resumable checkpoints and a <code>uv</code>-locked environment.</li>
-</ul>
-<p>Takeaway: with only ~3.7k images, training ResNet-50 from scratch on this dataset does not work well (train accuracy 73% vs. 32% test), while a pretrained backbone reaches ~92% in 10 epochs. This is a conclusion for this setup, not a general rule.</p>
-<div class="chips"><span class="chip">PyTorch</span><span class="chip">Transfer learning</span><span class="chip">Computer vision</span></div>
-<p><a href="https://github.com/bzaat/pytorch-resnet50v1-implementation">View on GitHub</a></p>
-</div>
-
-<div class="card">
-<h3>Melbourne housing price prediction</h3>
-<p class="meta">Python · 10,480 cleaned transactions</p>
-<p>Seven regression models compared with 5-fold cross-validation on log-price, plus an ablation of suburb-level target encoding with a shuffled-suburb leakage control and SHAP interpretation. XGBoost and LightGBM reached R² = 0.843; suburb encoding raised Random Forest test R² from 0.815 to 0.835 (paper values).</p>
-<div class="figs">
-<figure><a href="img/melb_model_comparison.png"><img src="img/melb_model_comparison.png" alt="5-fold CV R2 of seven regression models" loading="lazy"></a><figcaption>5-fold CV R² of the 7 models (re-computed from the repo code).</figcaption></figure>
-<figure><a href="img/melb_suburb_ablation.png"><img src="img/melb_suburb_ablation.png" alt="Random Forest suburb ablation and shuffled-suburb control" loading="lazy"></a><figcaption>Random Forest without / with / shuffled suburb (re-computed; the paper reports 0.815 / 0.835 / 0.810 test R²).</figcaption></figure>
-</div>
-<div class="chips"><span class="chip">Scikit-learn</span><span class="chip">XGBoost</span><span class="chip">LightGBM</span><span class="chip">SHAP</span><span class="chip">SQL</span></div>
-<p><a href="https://github.com/bzaat/Real-Estate-Price-Analysis">View on GitHub</a></p>
-</div>
-</section>
-
-<section id="research">
-<h2>Research</h2>
-<div class="card">
-<div class="split">
-<div>
-<h3>The Impact of Suburb-Level Encoding on Melbourne Housing Price Prediction</h3>
-<p class="meta">SCI-2026, 8th Int. Conf. on Smart Computing and Informatics · First author (1 of 5) · Accepted / under publication · Presented 28–29 April 2026, Swinburne Vietnam, Hanoi</p>
-<dl class="facts">
-<dt>Problem</dt><dd>Does adding suburb-level location information improve house-price prediction, and is the gain real locality signal?</dd>
-<dt>Method</dt><dd>7 regression models on 10,480 cleaned Melbourne transactions (log-price target, 5-fold CV); suburb target-encoded inside the pipeline; Random Forest ablation with, without and with shuffled suburb labels; SHAP.</dd>
-<dt>Key result</dt><dd>XGBoost and LightGBM best (CV R² 0.843). Suburb encoding raised Random Forest test R² from 0.815 to 0.835; with shuffled suburb it fell to 0.810.</dd>
-</dl>
-<p><a href="https://github.com/bzaat/Real-Estate-Price-Analysis/blob/main/Realestate%20(3).pdf">Accepted manuscript (PDF)</a> · <a href="SCI-2026_Certificate_of_Appreciation.pdf">Presentation certificate (PDF)</a> · <a href="https://github.com/bzaat/Real-Estate-Price-Analysis">Code</a></p>
-</div>
-<a href="SCI-2026_Certificate_of_Appreciation.pdf"><img src="SCI-2026_Certificate.jpg" alt="SCI-2026 certificate of appreciation for presenting the paper" loading="lazy"></a>
-</div>
-</div>
-
-<div class="card">
-<h3>Uncertainty-Triggered Active Sensing for UAV Maritime Rescue Prioritization under Wave Occlusion</h3>
-<p class="meta">IECON 2026 · Third author (3 of 4) · Accepted / under publication</p>
-<dl class="facts">
-<dt>Problem</dt><dd>In maritime search and rescue, a high-risk casualty partly hidden by waves or glare can be postponed by a deterministic routing policy because the visual evidence is ambiguous.</dd>
-<dt>Method</dt><dd>AES-RARR: evidential uncertainty for posture ambiguity, a drift-aware Kalman tracker, lower-altitude verification only when a target is both uncertain and plausibly urgent, and a logistics-aware risk score to order rescues.</dd>
-<dt>Evaluation</dt><dd>Simulation only: 500 Monte Carlo trials, 3 victims, 2 distractors, 30% initial occlusion. Perception is an evidential proxy; no detector was trained.</dd>
-<dt>Key result</dt><dd>Versus a distance-based router: worst-case survival 0.25 vs 0.16, catastrophic failures 67% vs 83%, false-alarm visits 35.0% vs 60.5%.</dd>
-<dt>Limitation</dt><dd>Results against deterministic expected-risk routing are mixed, because verification descents add latency.</dd>
-</dl>
-<p><a href="https://drive.google.com/file/d/1FCH_cXJ0TVkZ_ojBMmjDJuSu9dBFo4y0/view?usp=sharing">Paper (PDF)</a></p>
-</div>
-
-<div class="card">
-<h3>AITA Lab reading group: federated learning</h3>
-<p class="meta">10/2025–02/2026 · FPT University</p>
-<p>Reviewed and presented research papers in the group.</p>
-</div>
-</section>
-
-<section id="skills">
-<h2>Skills</h2>
-<dl>
-<dt>Core areas</dt><dd>Machine Learning, Deep Learning, Computer Vision, Predictive Modeling, Data Analysis</dd>
-<dt>Languages</dt><dd>Python, C (basic), SQL, LaTeX</dd>
-<dt>Tools</dt><dd>PyTorch, Scikit-learn, OpenCV, Git/GitHub, Linux, Bash, uv, Docker</dd>
-<dt>Spoken languages</dt><dd>Vietnamese (native), English (professional working proficiency)</dd>
-</dl>
-</section>
-
-<section id="contact">
-<h2>Contact</h2>
-<p>Email: <a href="mailto:nguyentvvn12@gmail.com">nguyentvvn12@gmail.com</a> · <a href="https://www.linkedin.com/in/khanh-nguyen-pham-nguyen-7b822b371">LinkedIn</a> · <a href="https://github.com/bzaat">GitHub</a> · Ho Chi Minh City, Vietnam</p>
-</section>
-</div>
-<footer><div class="wrap">© Pham Nguyen Khanh Nguyen</div></footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0E131A" />
+    <title>Pham Nguyen Khanh Nguyen | Applied ML & Computer Vision</title>
+    <meta
+      name="description"
+      content="AI undergraduate at FPT University building and evaluating computer vision models. Publications at SCI-2026 and IECON 2026. Available for Spring 2027 AI & Robotics internships."
+    />
+    <meta property="og:title" content="Pham Nguyen Khanh Nguyen | Applied ML & Computer Vision" />
+    <meta
+      property="og:description"
+      content="Computer vision, uncertainty-aware decision making, and reproducible deep learning experiments."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E131A'/%3E%3Cpath d='M5 25 C10 24 12 9 17 8 S25 7 27 7' fill='none' stroke='%23F0B44C' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="/bzaat/assets/index-CTKfwh7b.js"></script>
+    <link rel="stylesheet" crossorigin href="/bzaat/assets/index-BlXRVzc5.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
