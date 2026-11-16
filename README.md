@@ -1,5 +1,3 @@
-<img align="right" width="132" src="docs/photo.jpg" alt="Portrait of Pham Nguyen Khanh Nguyen">
-
 # Pham Nguyen Khanh Nguyen
 
 **AI undergraduate · Machine Learning · Deep Learning · Computer Vision**<br>
@@ -11,8 +9,6 @@ FPT University, Ho Chi Minh City, Vietnam (B.AI, expected 05/2028)
 <a href="mailto:nguyentvvn12@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white"></a>
 
 <img alt="Open to AI / Deep Learning internships, Feb–Apr 2027" src="https://img.shields.io/badge/Open_to-AI_%2F_Deep_Learning_internships_(Feb–Apr_2027)-2ea44f">
-
-<br clear="right">
 
 ## About me
 
