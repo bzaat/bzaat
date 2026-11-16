@@ -6,8 +6,8 @@ import { Basilisk, Niffler, Owl } from "./animals";
 
 /* ------------------------------------------------------------------ the figure */
 
-type Hair = "messy" | "bushy" | "ginger" | "bald" | "wild" | "slick" | "tousled" | "bob" | "neat";
-type Spec = {
+type Hair = "messy" | "bushy" | "ginger" | "bald" | "wild" | "slick" | "tousled" | "bob" | "neat" | "curtains" | "silver";
+export type Spec = {
   skin: string;
   hair: Hair;
   hairColor: string;
@@ -28,6 +28,10 @@ type Spec = {
   glow?: string; // wand-tip glow
   book?: boolean;
   bowtruckle?: boolean;
+  beard?: string; // long beard colour (Dumbledore)
+  wizardHat?: string; // pointed starry hat colour
+  halfMoon?: boolean; // half-moon spectacles
+  collar?: boolean; // high buttoned collar (Snape)
 };
 
 const INK = "#231709";
@@ -45,6 +49,8 @@ function BackHair({ s }: { s: Spec }) {
         ))}
       </g>
     );
+  if (s.hair === "curtains" || s.hair === "silver")
+    return <path d="M12 40 Q12 11 40 11 Q68 11 68 40 L69 70 Q62 72 58 64 L58 42 L22 42 L22 64 Q18 72 11 70Z" fill={c} />;
   if (s.hair === "bob") return <path d="M13 40 Q13 12 40 12 Q67 12 67 40 L67 58 Q60 62 56 56 L56 42 L24 42 L24 56 Q20 62 13 58Z" fill={c} />;
   return null;
 }
@@ -71,6 +77,10 @@ function FrontHair({ s }: { s: Spec }) {
       return <path d="M14 42 Q12 16 38 12 Q66 12 66 40 Q63 32 58 34 Q57 26 50 29 Q48 22 41 28 Q36 22 31 30 Q25 26 23 34 Q18 31 14 42Z" fill={c} />;
     case "bob":
       return <path d="M15 38 Q16 16 40 15 Q64 16 65 38 L65 30 Q52 32 40 30 Q28 32 15 30Z" fill={c} />;
+    case "curtains":
+      return <path d="M14 44 Q13 13 40 12 Q67 13 66 44 Q61 27 43 22 L40 31 L37 22 Q19 27 14 44Z" fill={c} />;
+    case "silver":
+      return <path d="M15 40 Q16 18 40 17 Q64 18 65 40 Q58 30 40 29 Q22 30 15 40Z" fill={c} />;
     case "neat":
       return <path d="M15 36 Q16 14 40 13 Q64 14 65 36 Q60 24 46 24 L44 21 Q30 21 15 36Z" fill={c} />;
     default:
@@ -78,7 +88,7 @@ function FrontHair({ s }: { s: Spec }) {
   }
 }
 
-function Figure({ s }: { s: Spec }) {
+export function Figure({ s }: { s: Spec }) {
   const hem = s.long ? 108 : 104;
   return (
     <svg viewBox="0 0 80 122" className="block h-auto w-full overflow-visible" aria-hidden="true">
@@ -121,6 +131,14 @@ function Figure({ s }: { s: Spec }) {
           <path d="M33 64 L33 71 M40 65 L40 72 M47 64 L47 71" stroke={s.scarf[1]} strokeWidth="2.2" />
           <rect x="45" y="66" width="7" height="20" rx="2" fill={s.scarf[0]} />
           <path d="M45 72 H52 M45 78 H52" stroke={s.scarf[1]} strokeWidth="2.2" />
+        </g>
+      )}
+      {s.collar && (
+        <g>
+          <path d="M27 58 L53 58 L55 69 Q40 72 25 69Z" fill={s.robe} stroke="#5E6B66" strokeOpacity=".6" />
+          {[74, 81, 88, 95].map((y) => (
+            <circle key={y} cx="40" cy={y} r="1" fill="#5E6B66" />
+          ))}
         </g>
       )}
       {/* left arm (+ book) */}
@@ -190,6 +208,29 @@ function Figure({ s }: { s: Spec }) {
           <path d="M38.2 43.5 Q40 42 41.8 43.5 M25.8 43 L16 41 M54.2 43 L64 41" />
         </g>
       )}
+      {s.beard && (
+        <g>
+          <path d="M22 50 Q40 68 58 50 Q63 76 50 100 L40 108 L30 100 Q17 76 22 50Z" fill={s.beard} stroke="#9AA0AA" strokeOpacity=".5" />
+          <path d="M32 54 Q36 51 40 53.5 Q44 51 48 54 Q44 57 40 56 Q36 57 32 54Z" fill={s.beard} stroke="#9AA0AA" strokeOpacity=".6" />
+          <path d="M33 66 Q36 80 38 92 M47 66 Q44 80 42 92" fill="none" stroke="#C9CCD6" strokeWidth=".9" />
+        </g>
+      )}
+      {s.halfMoon && (
+        <g fill="none" stroke="#C59B27" strokeWidth="1.4">
+          <path d="M25.5 45 A6.5 5.5 0 0 0 38.5 45 Z" />
+          <path d="M41.5 45 A6.5 5.5 0 0 0 54.5 45 Z" />
+          <path d="M38.5 45 Q40 43.6 41.5 45" />
+        </g>
+      )}
+      {s.wizardHat && (
+        <g>
+          <path d="M18 31 Q26 0 50 -22 Q46 6 62 31Z" fill={s.wizardHat} stroke={INK} strokeOpacity=".35" />
+          <path d="M8 32 Q40 22 72 32 Q70 37 64 37 L16 37 Q10 37 8 32Z" fill={s.wizardHat} stroke={INK} strokeOpacity=".35" />
+          {[[34, 12], [44, 2], [40, 22], [52, 18]].map(([x, y]) => (
+            <path key={`${x}${y}`} d={`M${x} ${y - 2.6} L${x + 0.8} ${y - 0.8} L${x + 2.6} ${y} L${x + 0.8} ${y + 0.8} L${x} ${y + 2.6} L${x - 0.8} ${y + 0.8} L${x - 2.6} ${y} L${x - 0.8} ${y - 0.8}Z`} fill="#F1D27A" />
+          ))}
+        </g>
+      )}
       {s.hat && (
         <g>
           <path d="M11 33 Q13 6 40 6 Q67 6 69 33 Q71 36 66 36 L14 36 Q9 36 11 33Z" fill={s.hat} stroke={INK} strokeOpacity=".3" />
@@ -200,7 +241,7 @@ function Figure({ s }: { s: Spec }) {
   );
 }
 
-function Suitcase() {
+export function Suitcase() {
   return (
     <svg viewBox="0 0 90 70" className="block h-auto w-full overflow-visible" aria-hidden="true">
       <ellipse cx="45" cy="66" rx="40" ry="3" fill="#000" opacity=".2" />
@@ -215,6 +256,19 @@ function Suitcase() {
     </svg>
   );
 }
+
+/* ------------------------------------------------------------- shared specs */
+
+const GRYFFINDOR_SCARF: [string, string] = ["#7A1F1F", "#D4A338"];
+
+/** Characters reused by the theme-switch cutscenes. */
+export const SPEC = {
+  harry: { skin: "#F3D2BC", hair: "messy", hairColor: "#1E1A18", eyes: "#2E7D4F", glasses: true, scar: true, robe: "#2B2B33", trim: "#7A1F1F", scarf: GRYFFINDOR_SCARF, hand: "wand", glow: "#FFD27A" },
+  voldemort: { skin: "#E6EEE9", hair: "bald", hairColor: "transparent", eyes: "#C0392B", snakeNose: true, mouth: "thin", robe: "#0B0C10", trim: "#1A472A", long: true, hand: "wand", glow: "#2ECC71" },
+  snape: { skin: "#EDE6DF", hair: "curtains", hairColor: "#141214", eyes: "#141214", mouth: "thin", robe: "#101012", long: true, collar: true, hand: "wand", glow: "#2ECC71" },
+  dumbledore: { skin: "#F3D9C6", hair: "silver", hairColor: "#E8E8EE", eyes: "#2B5F86", beard: "#EEEEF3", halfMoon: true, mouth: "smile", robe: "#3B2A6B", trim: "#C59B27", long: true, wizardHat: "#2B2A6B", hand: "wand", glow: "#FFF3C4" },
+  newt: { skin: "#F3D2BC", hair: "tousled", hairColor: "#8B5A2B", freckles: true, robe: "#2F4E73", long: true, scarf: ["#ECB939", "#372E29"], hand: "wand", book: true, bowtruckle: true },
+} satisfies Record<string, Spec>;
 
 /* --------------------------------------------------------------------- casts */
 

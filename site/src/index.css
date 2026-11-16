@@ -525,6 +525,94 @@
     animation-duration: 1.6s;
   }
 }
+/* Theme-switch cutscenes (DuelCutscene) */
+.duel-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 75% 70% at 50% 62%, transparent 40%, rgb(0 0 0 / 0.35) 100%);
+}
+.duel-text {
+  position: absolute;
+  translate: -50% -100%;
+  white-space: nowrap;
+  font-family: var(--font-title);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2.6vw, 1.9rem);
+  color: #fff;
+  text-shadow:
+    0 0 2px #000,
+    0 2px 6px rgb(0 0 0 / 0.6),
+    0 0 18px var(--glow);
+}
+.duel-wave {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--c) 0%, var(--c) 55%, color-mix(in srgb, var(--c) 40%, transparent) 70%, transparent 72%);
+  will-change: transform, opacity;
+}
+.duel-swirl {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, rgb(255 190 80 / 0), rgb(255 190 80 / 0.9), rgb(212 163 56 / 0.2), rgb(255 231 163 / 0.95), rgb(255 190 80 / 0));
+  filter: blur(6px);
+  will-change: transform, opacity;
+}
+.duel-coin {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff3c4, #d4a338 60%, #8c6d12);
+  box-shadow: 0 0 10px rgb(255 200 90 / 0.8);
+  will-change: transform, opacity;
+}
+.duel-mist {
+  position: absolute;
+  inset: 0 -20%;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgb(231 181 74 / 0.55) 30%,
+    rgb(140 210 245 / 0.75) 50%,
+    rgb(231 181 74 / 0.5) 70%,
+    transparent 100%
+  );
+  filter: blur(18px);
+  will-change: transform;
+}
+.tb-flap .tb-wing {
+  transform-box: fill-box;
+  animation: tb-flap 0.22s ease-in-out infinite alternate;
+}
+.tb-flap .tb-wing-l {
+  transform-origin: 100% 60%;
+}
+.tb-flap .tb-wing-r {
+  transform-origin: 0% 60%;
+}
+@keyframes tb-flap {
+  from {
+    transform: rotate(14deg) scaleY(1);
+  }
+  to {
+    transform: rotate(-16deg) scaleY(0.85);
+  }
+}
+.tb-flap .tb-wing-r {
+  animation-name: tb-flap-r;
+}
+@keyframes tb-flap-r {
+  from {
+    transform: rotate(-14deg) scaleY(1);
+  }
+  to {
+    transform: rotate(16deg) scaleY(0.85);
+  }
+}
+
 /* Chibi cast: speech bubbles, idle bounce, wand glow */
 .chibi-bubble {
   position: absolute;

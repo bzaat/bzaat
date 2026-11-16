@@ -55,9 +55,9 @@ export function prefersReducedMotion(): boolean {
 }
 
 /**
- * Switch theme: colours cross-fade over 400ms while a spell ripple (see
- * spells.ts / SpellLayer) spreads from `origin`, the clicked dock button.
- * Reduced motion: instant, no ripple.
+ * Switch theme. A registered transition (the duel cutscene) may take over and
+ * call `commit` at its impact moment; otherwise colours cross-fade over 400ms with
+ * a spell ripple from `origin`. Reduced motion: instant.
  */
 export function setTheme(theme: Theme, origin?: { x: number; y: number }) {
   try {
@@ -65,20 +65,40 @@ export function setTheme(theme: Theme, origin?: { x: number; y: number }) {
   } catch {
     /* storage blocked: the choice still applies for this visit */
   }
-  if (theme === getTheme()) return;
+  const from = getTheme();
+  if (theme === from) {
+    transition?.cancel();
+    return;
+  }
   if (prefersReducedMotion()) {
     apply(theme);
     return;
   }
   const root = document.documentElement;
-  root.classList.add("theme-fade");
-  apply(theme);
+  const commit = () => {
+    root.classList.add("theme-fade");
+    apply(theme);
+    window.setTimeout(() => root.classList.remove("theme-fade"), 420);
+  };
+  if (origin && transition?.play(from, theme, commit)) return;
+  commit();
   if (origin) onThemeCast?.(origin.x, origin.y, theme);
-  window.setTimeout(() => root.classList.remove("theme-fade"), 420);
 }
 
 /** Set by spells.ts so theme switches can cast a ripple without a circular import. */
 let onThemeCast: ((x: number, y: number, theme: Theme) => void) | undefined;
 export function registerThemeCast(fn: (x: number, y: number, theme: Theme) => void) {
   onThemeCast = fn;
+}
+
+/** A transition that can take over a theme switch and commit it later (the cutscene). */
+type Transition = {
+  /** Return true to take over; must eventually call `commit`. */
+  play: (from: Theme, to: Theme, commit: () => void) => boolean;
+  /** Finish any running transition immediately. */
+  cancel: () => void;
+};
+let transition: Transition | undefined;
+export function registerThemeTransition(t: Transition | undefined) {
+  transition = t;
 }
