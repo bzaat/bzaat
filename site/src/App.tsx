@@ -90,9 +90,8 @@ export default function App() {
       </header>
 
       <main id="main" className="pb-24">
-        {/* Hero: full-bleed looping video behind a centred content grid */}
+        {/* Hero: the looping video sits behind the chibi cast and the frosted ResNet-50 card */}
         <div className="relative isolate overflow-hidden">
-          <HeroVideo theme={theme} still={!spells} />
         <section id="top" aria-labelledby="hero-title" className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 md:px-8 md:py-24 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <p className="inline-flex items-center gap-2.5 rounded-full border border-ok/40 px-3.5 py-1.5 text-sm">
@@ -176,8 +175,9 @@ export default function App() {
           </div>
 
           <div className="relative mt-40 lg:col-span-6 lg:mt-36">
+          <HeroVideo theme={theme} still={!spells} className="-inset-x-10 -top-64 -bottom-16 sm:-inset-x-20 lg:-inset-x-24 lg:-top-72" />
           <ChibiCast theme={theme} />
-          <figure className="fx-card rounded-lg p-4 md:p-6">
+          <figure className="fx-card hero-glass rounded-lg p-4 md:p-6">
             <ValCurves />
             <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t border-line pt-4 text-sm text-muted">
               <span className="max-w-[46ch]">
