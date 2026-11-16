@@ -521,6 +521,105 @@
     animation-duration: 1.6s;
   }
 }
+/* Chibi cast: speech bubbles, idle bounce, wand glow */
+.chibi-bubble {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  translate: -50% 0;
+  z-index: 30;
+  width: max-content;
+  max-width: 11rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.9rem;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-raised);
+  color: var(--color-text);
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  text-align: center;
+  box-shadow: 0 8px 22px -10px rgb(0 0 0 / 0.55);
+  pointer-events: none;
+}
+.chibi-bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  rotate: 45deg;
+  background: var(--color-raised);
+  border-right: 1px solid var(--color-line-strong);
+  border-bottom: 1px solid var(--color-line-strong);
+}
+.chibi-bubble-end {
+  left: auto;
+  right: 0;
+  translate: none;
+}
+.chibi-bubble-end::after {
+  left: auto;
+  right: 1.25rem;
+}
+.chibi:focus-visible {
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .chibi {
+    transform-origin: 50% 100%;
+    animation: chibi-bob 2.8s ease-in-out infinite;
+  }
+  .chibi:hover {
+    animation-duration: 1.2s;
+  }
+  .chibi[data-act] {
+    animation: chibi-hop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1);
+  }
+  .chibi .chibi-glow {
+    animation: m-glow 1.4s ease-in-out infinite alternate;
+  }
+  .chibi .chibi-peek {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: chibi-peek 4.5s ease-in-out infinite;
+  }
+}
+@keyframes chibi-bob {
+  0%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.01, 0.99);
+  }
+}
+@keyframes chibi-hop {
+  0% {
+    transform: translateY(0) scale(1.06, 0.92);
+  }
+  40% {
+    transform: translateY(-10px) scale(0.96, 1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+@keyframes chibi-peek {
+  0%,
+  55%,
+  100% {
+    transform: translateY(0);
+  }
+  65%,
+  85% {
+    transform: translateY(-3px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .m-envelope,
   .m-smoke {

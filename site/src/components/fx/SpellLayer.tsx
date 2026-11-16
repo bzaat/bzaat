@@ -55,7 +55,7 @@ export function SpellLayer() {
                 }
               />
             ))}
-            <span className="spell-text">{s.text}</span>
+            {s.text && <span className="spell-text">{s.text}</span>}
           </span>
         ),
       )}

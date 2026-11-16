@@ -13,7 +13,7 @@ import { useTheme } from "./theme";
 import { castAt, useSpells } from "./spells";
 import { SpellLayer } from "./components/fx/SpellLayer";
 import { SpellToggle } from "./components/SpellToggle";
-import { Mascot } from "./components/Mascot";
+import { ChibiCast } from "./components/ChibiCast";
 
 const cvHref = `${import.meta.env.BASE_URL}${profile.cv}`;
 const projectFromHash = () => {
@@ -175,8 +175,8 @@ export default function App() {
             </div>
           </div>
 
-          <div className="relative mt-6 lg:col-span-6 lg:mt-0">
-          <Mascot theme={theme} />
+          <div className="relative mt-40 lg:col-span-6 lg:mt-36">
+          <ChibiCast theme={theme} />
           <figure className="fx-card rounded-lg p-4 md:p-6">
             <ValCurves />
             <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t border-line pt-4 text-sm text-muted">
