@@ -6,6 +6,7 @@ import { Publications } from "./components/Publications";
 import { Projects } from "./components/Projects";
 import { ProjectDrawer } from "./components/ProjectDrawer";
 import { Stack } from "./components/Stack";
+import { ThemeToggle } from "./components/ThemeToggle";
 
 const cvHref = `${import.meta.env.BASE_URL}${profile.cv}`;
 const projectFromHash = () => {
@@ -48,14 +49,14 @@ export default function App() {
           <a href="#top" className="hidden font-semibold tracking-tight sm:block">
             Khanh Nguyen Pham
           </a>
-          <ul className="flex items-center gap-1 text-sm sm:gap-2">
+          <ul className="flex items-center text-sm sm:gap-2">
             {[
               ["#publications", "Publications"],
               ["#projects", "Projects"],
               ["#stack", "Stack"],
             ].map(([href, label]) => (
               <li key={href}>
-                <a href={href} className="inline-flex min-h-11 items-center rounded-md px-2.5 text-muted hover:text-text">
+                <a href={href} className="inline-flex min-h-11 items-center rounded-md px-2 text-muted hover:text-text sm:px-2.5">
                   {label}
                 </a>
               </li>
@@ -64,11 +65,14 @@ export default function App() {
               <a
                 href={cvHref}
                 download
-                className="ml-1 inline-flex min-h-11 items-center gap-1.5 rounded-md px-2.5 text-amber hover:underline"
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-md px-2 text-amber hover:underline sm:ml-1 sm:px-2.5"
               >
                 <FileDown aria-hidden="true" className="size-4" />
                 CV
               </a>
+            </li>
+            <li>
+              <ThemeToggle />
             </li>
           </ul>
         </nav>
