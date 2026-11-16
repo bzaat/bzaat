@@ -1,8 +1,8 @@
-# Regenerates the live profile cards (Spell of the Day + Ministry of Magic Records)
+# Regenerates the live profile cards (Concept of the Day + GitHub Records)
 # in light and dark variants, and commits them only when they changed.
 # Note: GitHub pauses scheduled workflows in repos with no activity for 60 days;
 # re-enable from the Actions tab if that happens (no keep-alive commits).
-name: Update magic cards
+name: Update profile cards
 
 on:
   schedule:
@@ -41,5 +41,5 @@ jobs:
             echo "No changes to commit"
             exit 0
           fi
-          git commit -m "Update magic cards [skip ci]"
+          git commit -m "Update profile cards [skip ci]"
           git push

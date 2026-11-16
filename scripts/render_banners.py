@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Draw the three animated hero banners for the profile README (1200x360 SVG).
 
-  assets/banner-auror-light.svg       light mode: parchment, Patronus particles, snitch,
-                                      quill, investigation board of real projects
-  assets/banner-dark-arts.svg         dark mode: obsidian, emerald mist, rotating rune
-                                      circle, curse sparks
-  assets/banner-fantastic-beasts.svg  Newt's case: latch opens, treasure spills, field
+  assets/banner-auror-light.svg       light mode: parchment, gold particles, quill,
+                                      project board of real projects
+  assets/banner-dark-arts.svg         dark mode: obsidian, emerald mist, rotating
+                                      circle, sparks
+  assets/banner-fantastic-beasts.svg  research case: latch opens, coins spill, field
                                       journal inks in
 
 Pure SVG + CSS keyframes (no JS, no SMIL) so GitHub renders them inside <img> and
@@ -56,7 +56,7 @@ def banner_light() -> str:
             f'style="animation-duration:{dur:.1f}s;animation-delay:-{rnd.uniform(0, dur):.1f}s"/>'
         )
 
-    # Auror investigation board: real projects pinned and linked with gold thread.
+    # Project board: real projects pinned and linked with gold thread.
     nodes = [
         (880, 92, "ResNet-50", "from scratch"),
         (1090, 118, "SCI-2026", "first author"),
@@ -79,9 +79,9 @@ def banner_light() -> str:
     )
 
     return svg_open(
-        "Pham Nguyen Khanh Nguyen, Applied Machine Learning and Computer Vision (Auror Office theme)",
-        "Parchment banner with drifting silver-blue Patronus light, a golden snitch and a quill, "
-        "and an investigation board linking ResNet-50, SCI-2026, AES-RARR (IECON 2026) and a badminton computer-vision project.",
+        "Pham Nguyen Khanh Nguyen, Applied Machine Learning and Computer Vision (light theme)",
+        "Parchment banner with drifting silver-blue light, a flying golden orb and a quill, "
+        "and a project board linking ResNet-50, SCI-2026, AES-RARR (IECON 2026) and a badminton computer-vision project.",
         "bl",
     ) + f"""  <defs>
     <radialGradient id="bl-bg" cx="35%" cy="45%" r="80%">
@@ -124,7 +124,7 @@ def banner_light() -> str:
   <ellipse class="halo" cx="330" cy="170" rx="300" ry="120" fill="url(#bl-halo)"/>
   <g>{''.join(particles)}</g>
 
-  <text x="72" y="92" font-size="15" letter-spacing="4" fill="#6B5537">AUROR OFFICE · DEPARTMENT OF COMPUTER VISION</text>
+  <text x="72" y="92" font-size="15" letter-spacing="4" fill="#6B5537">APPLIED AI · DEPARTMENT OF COMPUTER VISION</text>
   <text x="70" y="168" font-size="50" font-weight="bold" fill="{ink}">{NAME}</text>
   <text x="72" y="214" font-size="25" font-style="italic" fill="{ink}">{ROLE}</text>
   <text x="72" y="252" font-size="17" fill="#5A4630">Computer vision · uncertainty-aware perception · embodied AI</text>
@@ -208,9 +208,9 @@ def banner_dark() -> str:
     )
 
     return svg_open(
-        "Pham Nguyen Khanh Nguyen, Applied Machine Learning and Computer Vision (Dark Arts theme)",
-        "Obsidian banner with drifting emerald mist, a slowly turning circle of glowing runes, "
-        "flickering green curse sparks and rising embers.",
+        "Pham Nguyen Khanh Nguyen, Applied Machine Learning and Computer Vision (dark theme)",
+        "Obsidian banner with drifting emerald mist, a slowly turning circle of glowing glyphs, "
+        "flickering green sparks and rising embers.",
         "bd",
     ) + f"""  <defs>
     <radialGradient id="bd-bg" cx="80%" cy="50%" r="90%">
@@ -250,7 +250,7 @@ def banner_dark() -> str:
   <g class="ring rev"><circle cx="{cx}" cy="{cy}" r="84" fill="none" stroke="{emerald}" stroke-width="1" stroke-dasharray="3 6"/>{ring(84, 14, 11)}</g>
   <g>{sparks}</g>
 
-  <text x="72" y="92" font-size="15" letter-spacing="4" fill="#7FA88E">DARK ARTS DIVISION · DEBUGGING AFTER MIDNIGHT</text>
+  <text x="72" y="92" font-size="15" letter-spacing="4" fill="#7FA88E">RESEARCH LAB · DEBUGGING AFTER MIDNIGHT</text>
   <text class="title" x="70" y="168" font-size="50" font-weight="bold" fill="{silver}">{NAME}</text>
   <text x="72" y="214" font-size="25" font-style="italic" fill="{glow}">{ROLE}</text>
   <text x="72" y="252" font-size="17" fill="#9DA5AA">Computer vision · uncertainty-aware perception · embodied AI</text>
@@ -272,11 +272,11 @@ def banner_beasts() -> str:
     )
 
     entries = [
-        ("Niffler", "small-object detection: finds the 10 px shuttlecock"),
-        ("Demiguise", "evidential uncertainty: sees what might happen"),
-        ("Bowtruckle", "ResNet-50 built twig by twig, from scratch"),
-        ("Mooncalf", "reads patterns in fields: suburb-level encoding"),
-        ("Occamy", "Vision Transformers: next expedition"),
+        ("Detection", "small objects: finds the 10 px shuttlecock"),
+        ("Uncertainty", "evidential learning: knows when to look closer"),
+        ("ResNet-50", "built layer by layer, from scratch"),
+        ("Encoding", "suburb-level target encoding, with controls"),
+        ("ViT", "Vision Transformers: next on the list"),
     ]
     lines = "".join(
         f'<g class="entry" style="animation-delay:{3.4 + i * 0.45:.2f}s">'
@@ -290,10 +290,10 @@ def banner_beasts() -> str:
     )
 
     return svg_open(
-        "Newt Scamander's case: a field guide mapping machine-learning work to magical creatures",
+        "Research case: a field guide to models and methods",
         "A worn leather suitcase unlatches and spills golden coins, then a field journal inks in: "
-        "Niffler for small-object detection, Demiguise for evidential uncertainty, Bowtruckle for a from-scratch ResNet-50, "
-        "Mooncalf for suburb-level encoding, and Occamy for Vision Transformers as the next expedition.",
+        "small-object detection, evidential uncertainty, a from-scratch ResNet-50, "
+        "suburb-level target encoding, and Vision Transformers as the next topic.",
         "fb",
     ) + f"""  <defs>
     <linearGradient id="fb-bg" x1="0" y1="0" x2="1" y2="1">
@@ -336,13 +336,13 @@ def banner_beasts() -> str:
   <rect x="190" y="196" width="22" height="22" rx="3" fill="{gold}" stroke="#8C6D12"/>
   <rect x="368" y="196" width="22" height="22" rx="3" fill="{gold}" stroke="#8C6D12"/>
   <rect class="latch" x="280" y="196" width="20" height="28" rx="4" fill="{gold}" stroke="#8C6D12"/>
-  <text x="290" y="342" text-anchor="middle" font-size="14" font-style="italic" fill="#BFA98A">N. Scamander, Magizoologist</text>
+  <text x="290" y="342" text-anchor="middle" font-size="14" font-style="italic" fill="#BFA98A">P. N. K. Nguyen, research notes</text>
 
   <!-- the field journal -->
   <g class="journal">
     <rect x="548" y="40" width="612" height="282" rx="6" fill="{parch}" stroke="{leather}" stroke-width="3" transform="rotate(-1 854 181)"/>
     {scales}
-    <text x="574" y="112" font-size="26" font-weight="bold" fill="{ink}">Magizoology Field Guide</text>
+    <text x="574" y="112" font-size="26" font-weight="bold" fill="{ink}">Research Field Guide</text>
     <text x="1132" y="112" text-anchor="end" font-size="13" font-style="italic" fill="#6B5537">models &amp; methods, catalogued</text>
     <g transform="translate(574 156)">{lines}</g>
   </g>
