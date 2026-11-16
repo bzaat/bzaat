@@ -1,5 +1,4 @@
 import { useSyncExternalStore } from "react";
-import { flushSync } from "react-dom";
 
 export type Theme = "auror" | "darkarts" | "beasts";
 export const THEMES: Theme[] = ["auror", "darkarts", "beasts"];
@@ -55,14 +54,10 @@ export function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-type VTDocument = Document & {
-  startViewTransition?: (cb: () => void) => { ready: Promise<void> };
-};
-
 /**
- * Switch theme. With `origin` (the clicked button's centre) and View Transitions
- * support, the new theme spreads out from that point like a cast spell;
- * otherwise colours cross-fade. Reduced motion: instant.
+ * Switch theme: colours cross-fade over 400ms while a spell ripple (see
+ * spells.ts / SpellLayer) spreads from `origin`, the clicked dock button.
+ * Reduced motion: instant, no ripple.
  */
 export function setTheme(theme: Theme, origin?: { x: number; y: number }) {
   try {
@@ -71,28 +66,19 @@ export function setTheme(theme: Theme, origin?: { x: number; y: number }) {
     /* storage blocked: the choice still applies for this visit */
   }
   if (theme === getTheme()) return;
-
-  const doc = document as VTDocument;
   if (prefersReducedMotion()) {
     apply(theme);
-    return;
-  }
-  if (origin && doc.startViewTransition) {
-    const { x, y } = origin;
-    const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-    const vt = doc.startViewTransition(() => flushSync(() => apply(theme)));
-    vt.ready
-      .then(() => {
-        document.documentElement.animate(
-          { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] },
-          { duration: 700, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)", pseudoElement: "::view-transition-new(root)" },
-        );
-      })
-      .catch(() => {});
     return;
   }
   const root = document.documentElement;
   root.classList.add("theme-fade");
   apply(theme);
-  window.setTimeout(() => root.classList.remove("theme-fade"), 500);
+  if (origin) onThemeCast?.(origin.x, origin.y, theme);
+  window.setTimeout(() => root.classList.remove("theme-fade"), 420);
+}
+
+/** Set by spells.ts so theme switches can cast a ripple without a circular import. */
+let onThemeCast: ((x: number, y: number, theme: Theme) => void) | undefined;
+export function registerThemeCast(fn: (x: number, y: number, theme: Theme) => void) {
+  onThemeCast = fn;
 }

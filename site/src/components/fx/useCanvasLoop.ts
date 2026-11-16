@@ -11,9 +11,14 @@ export type Painter = {
 /**
  * Runs a painter on a canvas at up to 60 fps, with the canvas sized to its box.
  * Pauses when the canvas is off-screen or the tab is hidden. Under
- * prefers-reduced-motion it advances the scene briefly and paints one still frame.
+ * prefers-reduced-motion (or `still`) it advances the scene briefly and paints one still frame.
  */
-export function useCanvasLoop(ref: RefObject<HTMLCanvasElement | null>, makePainter: () => Painter, deps: unknown[]) {
+export function useCanvasLoop(
+  ref: RefObject<HTMLCanvasElement | null>,
+  makePainter: () => Painter,
+  deps: unknown[],
+  opts: { still?: boolean } = {},
+) {
   useEffect(() => {
     const canvas = ref.current;
     const ctx = canvas?.getContext("2d");
@@ -27,7 +32,7 @@ export function useCanvasLoop(ref: RefObject<HTMLCanvasElement | null>, makePain
     let last = 0;
     let t = 0;
     let visible = true;
-    const still = prefersReducedMotion();
+    const still = !!opts.still || prefersReducedMotion();
 
     const resize = () => {
       const r = canvas.getBoundingClientRect();
@@ -82,7 +87,7 @@ export function useCanvasLoop(ref: RefObject<HTMLCanvasElement | null>, makePain
       document.removeEventListener("visibilitychange", onVis);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
+  }, [...deps, !!opts.still]);
 }
 
 /** A soft round sprite (radial gradient) pre-rendered once, cheaper than shadowBlur. */

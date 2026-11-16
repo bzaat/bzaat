@@ -396,20 +396,129 @@
   }
 }
 
-/* Theme switch: circular reveal (View Transitions) or a short colour cross-fade */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
+/* Theme switch: 400ms colour cross-fade (the spell ripple is drawn by SpellLayer) */
 .theme-fade,
 .theme-fade * {
   transition:
-    background-color 0.45s ease,
-    border-color 0.45s ease,
-    color 0.45s ease,
-    fill 0.45s ease,
-    stroke 0.45s ease !important;
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    color 0.4s ease,
+    fill 0.4s ease,
+    stroke 0.4s ease !important;
+}
+
+/* ------------------------------------------------------------ spell overlay */
+.spell-ripple {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  margin: -60px 0 0 -60px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    transparent 42%,
+    color-mix(in srgb, var(--c) 55%, transparent) 58%,
+    color-mix(in srgb, #fff 35%, transparent) 62%,
+    transparent 72%
+  );
+  box-shadow: 0 0 40px 8px color-mix(in srgb, var(--c) 30%, transparent);
+  will-change: transform, opacity;
+  animation: spell-ripple 400ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.spell-star {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  background: var(--c);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  filter: drop-shadow(0 0 3px var(--c));
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: spell-star 750ms cubic-bezier(0.15, 0.8, 0.3, 1) forwards;
+}
+.spell-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-raised);
+  color: var(--color-text);
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 20px -8px rgb(0 0 0 / 0.5);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: incantation 1.2s ease-out forwards;
+}
+
+/* ------------------------------------------------------------------ mascots */
+.mascot {
+  -webkit-tap-highlight-color: transparent;
+}
+.mascot .m-lid,
+.mascot .m-wink {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  transform: scaleY(0);
+}
+.mascot .m-coin {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+.mascot[data-act] .m-coin {
+  transform: translateY(5px) scale(0.2);
+  opacity: 0;
+}
+.mascot[data-act] .m-wink {
+  transform: scaleY(1);
+}
+.m-envelope {
+  animation: m-envelope 1.2s ease-in forwards;
+}
+.m-smoke {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: m-smoke 1.2s ease-out forwards;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mascot .m-breathe {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: m-breathe 3.4s ease-in-out infinite;
+  }
+  .mascot .m-lid {
+    animation: m-blink 5.5s ease-in-out infinite;
+  }
+  .mascot .m-tilt {
+    transform-box: fill-box;
+    transform-origin: 50% 85%;
+    animation: m-tilt 9s ease-in-out infinite;
+  }
+  .mascot .m-glow {
+    animation: m-glow 2.6s ease-in-out infinite alternate;
+  }
+  .mascot .m-tongue {
+    transform-box: fill-box;
+    transform-origin: 50% 0;
+    animation: m-tongue 4s ease-in-out infinite;
+  }
+  .mascot:hover .m-breathe {
+    animation-duration: 1.6s;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .m-envelope,
+  .m-smoke {
+    display: none;
+  }
 }
 
 @keyframes draw {
@@ -451,5 +560,113 @@
 @keyframes rune-spin {
   to {
     --fx-a: 360deg;
+  }
+}
+@keyframes spell-ripple {
+  from {
+    transform: scale(0.2);
+    opacity: 0.95;
+  }
+  to {
+    transform: scale(var(--s));
+    opacity: 0;
+  }
+}
+@keyframes spell-star {
+  0% {
+    transform: translate(0, 0) scale(var(--k)) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.15) rotate(150deg);
+    opacity: 0;
+  }
+}
+@keyframes incantation {
+  0% {
+    transform: translate(-50%, -70%);
+    opacity: 0;
+  }
+  15% {
+    transform: translate(-50%, -130%);
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -200%);
+    opacity: 0;
+  }
+}
+@keyframes m-breathe {
+  50% {
+    transform: translateY(0.6px) scale(1.025, 0.975);
+  }
+}
+@keyframes m-blink {
+  0%,
+  90%,
+  100% {
+    transform: scaleY(0);
+  }
+  94% {
+    transform: scaleY(1);
+  }
+}
+@keyframes m-tilt {
+  0%,
+  62%,
+  100% {
+    transform: rotate(0);
+  }
+  70%,
+  80% {
+    transform: rotate(-9deg);
+  }
+  88% {
+    transform: rotate(3deg);
+  }
+}
+@keyframes m-glow {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes m-tongue {
+  0%,
+  80%,
+  100% {
+    transform: scaleY(0);
+  }
+  84%,
+  90% {
+    transform: scaleY(1);
+  }
+}
+@keyframes m-envelope {
+  0% {
+    transform: translate(0, 0) rotate(-8deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-14px, 70px) rotate(14deg);
+    opacity: 0;
+  }
+}
+@keyframes m-smoke {
+  0% {
+    transform: translateY(0) scale(0.35);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-26px) scale(1.9);
+    opacity: 0;
   }
 }

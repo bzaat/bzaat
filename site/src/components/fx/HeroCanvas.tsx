@@ -178,8 +178,8 @@ function fieldSketch(): Painter {
   };
 }
 
-export function HeroCanvas({ theme }: { theme: Theme }) {
+export function HeroCanvas({ theme, still = false }: { theme: Theme; still?: boolean }) {
   const ref = useRef<HTMLCanvasElement>(null);
-  useCanvasLoop(ref, () => (theme === "auror" ? patronus() : theme === "darkarts" ? vortex() : fieldSketch()), [theme]);
+  useCanvasLoop(ref, () => (theme === "auror" ? patronus() : theme === "darkarts" ? vortex() : fieldSketch()), [theme], { still });
   return <canvas ref={ref} aria-hidden="true" className="hero-canvas pointer-events-none absolute inset-0 -z-10 h-full w-full" />;
 }

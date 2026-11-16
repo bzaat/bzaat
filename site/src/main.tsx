@@ -6,6 +6,9 @@ import "@fontsource-variable/plus-jakarta-sans";
 import "@fontsource-variable/spline-sans-mono";
 import "./index.css";
 import App from "./App";
+import { initSpells } from "./spells";
+
+initSpells();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

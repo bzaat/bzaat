@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, type MouseEvent } from "react";
 import { FileDown, Github, Linkedin, Mail } from "lucide-react";
 import { profile, projects } from "./data";
 import { ValCurves } from "./components/ValCurves";
@@ -10,6 +10,10 @@ import { ThemeDock } from "./components/ThemeDock";
 import { AmbientCanvas } from "./components/fx/AmbientCanvas";
 import { HeroCanvas } from "./components/fx/HeroCanvas";
 import { useTheme } from "./theme";
+import { castAt, useSpells } from "./spells";
+import { SpellLayer } from "./components/fx/SpellLayer";
+import { SpellToggle } from "./components/SpellToggle";
+import { Mascot } from "./components/Mascot";
 
 const cvHref = `${import.meta.env.BASE_URL}${profile.cv}`;
 const projectFromHash = () => {
@@ -38,6 +42,8 @@ export default function App() {
 
   const project = projects.find((p) => p.id === openId) ?? null;
   const theme = useTheme();
+  const spells = useSpells();
+  const revelio = (e: MouseEvent<HTMLElement>) => castAt(e.currentTarget, "Revelio!");
 
   return (
     <>
@@ -60,7 +66,7 @@ export default function App() {
               ["#stack", "Stack"],
             ].map(([href, label]) => (
               <li key={href}>
-                <a href={href} className="inline-flex min-h-11 items-center rounded-md px-2 text-muted hover:text-text sm:px-2.5">
+                <a href={href} className="inline-flex min-h-11 items-center rounded-md px-1.5 text-muted hover:text-text sm:px-2.5">
                   {label}
                 </a>
               </li>
@@ -69,20 +75,24 @@ export default function App() {
               <a
                 href={cvHref}
                 download
-                className="inline-flex min-h-11 items-center gap-1.5 rounded-md px-2 text-amber hover:underline sm:ml-1 sm:px-2.5"
+                onClick={revelio}
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-md px-1.5 text-amber hover:underline sm:ml-1 sm:px-2.5"
               >
                 <FileDown aria-hidden="true" className="size-4" />
                 CV
               </a>
             </li>
+            <li>
+              <SpellToggle />
+            </li>
           </ul>
         </nav>
       </header>
 
-      <main id="main">
+      <main id="main" className="pb-24">
         {/* Hero: full-bleed canvas behind a centred content grid */}
         <div className="relative isolate overflow-hidden">
-          <HeroCanvas theme={theme} />
+          <HeroCanvas theme={theme} still={!spells} />
         <section id="top" aria-labelledby="hero-title" className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 md:px-8 md:py-24 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <p className="inline-flex items-center gap-2.5 rounded-full border border-ok/40 px-3.5 py-1.5 text-sm">
@@ -139,6 +149,7 @@ export default function App() {
               <a
                 href={cvHref}
                 download
+                onClick={revelio}
                 className="inline-flex min-h-11 items-center gap-2 rounded-md bg-amber px-4 font-medium text-amber-ink hover:bg-amber/90"
               >
                 <FileDown aria-hidden="true" className="size-4" />
@@ -164,7 +175,9 @@ export default function App() {
             </div>
           </div>
 
-          <figure className="fx-card rounded-lg p-4 md:p-6 lg:col-span-6">
+          <div className="relative mt-6 lg:col-span-6 lg:mt-0">
+          <Mascot theme={theme} />
+          <figure className="fx-card rounded-lg p-4 md:p-6">
             <ValCurves />
             <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t border-line pt-4 text-sm text-muted">
               <span className="max-w-[46ch]">
@@ -180,6 +193,7 @@ export default function App() {
               </button>
             </figcaption>
           </figure>
+          </div>
         </section>
         </div>
 
@@ -217,7 +231,7 @@ export default function App() {
               </a>
             </li>
             <li>
-              <a className="inline-flex min-h-11 items-center gap-2 hover:text-amber" href={cvHref} download>
+              <a className="inline-flex min-h-11 items-center gap-2 hover:text-amber" href={cvHref} download onClick={revelio}>
                 <FileDown aria-hidden="true" className="size-4" /> Download CV (PDF)
               </a>
             </li>
@@ -228,7 +242,8 @@ export default function App() {
       </footer>
 
       <ProjectDrawer project={project} onClose={close} />
-      <AmbientCanvas theme={theme} />
+      {spells && <AmbientCanvas theme={theme} />}
+      <SpellLayer />
       <ThemeDock />
     </>
   );

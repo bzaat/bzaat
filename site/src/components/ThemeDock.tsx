@@ -36,12 +36,12 @@ export function ThemeDock() {
   };
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex justify-center px-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+    <div className="pointer-events-none fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-50 sm:right-6 sm:bottom-6">
       <div
         role="radiogroup"
         aria-label="Theme"
         onKeyDown={onKey}
-        className="pointer-events-auto flex items-center gap-1 rounded-full border border-line-strong bg-raised/85 p-1 shadow-[0_10px_30px_-12px_rgb(0_0_0/0.55)] backdrop-blur-md"
+        className="pointer-events-auto flex items-center gap-0.5 rounded-full border border-line-strong bg-raised/85 p-1 shadow-[0_10px_30px_-12px_rgb(0_0_0/0.55)] backdrop-blur-md"
       >
         {THEMES.map((t) => {
           const { label, Icon } = OPTIONS[t];
@@ -59,7 +59,7 @@ export function ThemeDock() {
               title={label}
               tabIndex={active ? 0 : -1}
               onClick={() => choose(t)}
-              className={`relative isolate inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center gap-2 rounded-full px-3 text-sm font-medium transition-colors sm:px-4 ${
+              className={`relative isolate inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center gap-1.5 rounded-full px-2.5 text-[0.8125rem] font-medium transition-colors sm:px-3 ${
                 active ? "text-amber-ink" : "text-muted hover:text-text"
               }`}
             >
