@@ -33,12 +33,23 @@ function LoopVideo({ theme }: { theme: Theme }) {
     });
     io.observe(v);
     document.addEventListener("visibilitychange", sync);
+    // A decode error doesn't make the browser try the next <source>, so fall back to
+    // the MP4 ourselves instead of freezing on the first frame.
+    const onError = () => {
+      if (!v.currentSrc.endsWith(".mp4")) {
+        v.src = src(theme, ".mp4");
+        v.load();
+        sync();
+      }
+    };
+    v.addEventListener("error", onError);
     sync();
     return () => {
       io.disconnect();
       document.removeEventListener("visibilitychange", sync);
+      v.removeEventListener("error", onError);
     };
-  }, [present]);
+  }, [present, theme]);
 
   return (
     <video
@@ -59,12 +70,12 @@ function LoopVideo({ theme }: { theme: Theme }) {
   );
 }
 
-export function HeroVideo({ theme, still = false }: { theme: Theme; still?: boolean }) {
+export function HeroVideo({ theme, still = false, className = "" }: { theme: Theme; still?: boolean; className?: string }) {
   const reduce = useReducedMotion();
   const staticOnly = !!reduce || still;
 
   return (
-    <div aria-hidden="true" className="hero-video pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+    <div aria-hidden="true" className={`hero-video pointer-events-none absolute -z-10 overflow-hidden ${className}`}>
       <AnimatePresence initial={false}>
         <motion.div
           key={theme}
