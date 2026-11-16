@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark-arts.svg">
-  <img src="assets/banner-auror-light.svg" width="100%" alt="Pham Nguyen Khanh Nguyen, Applied Machine Learning and Computer Vision. Light mode shows the Auror Office theme, dark mode the Dark Arts theme.">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/bzaat/bzaat/main/assets/banner-dark-arts.svg">
+  <img src="https://raw.githubusercontent.com/bzaat/bzaat/main/assets/banner-auror-light.svg" width="100%" alt="Pham Nguyen Khanh Nguyen, Applied Machine Learning and Computer Vision. Light mode shows the Auror Office theme, dark mode the Dark Arts theme.">
 </picture>
 
 <p align="center">
@@ -26,12 +26,12 @@ I'm an AI undergraduate at FPT University, Ho Chi Minh City (B.Sc. Artificial In
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/card-dark.svg">
-    <img src="assets/card-light.svg" width="49%" alt="Spell of the Day from Potter DB with live GitHub metrics for bzaat, refreshed every 12 hours.">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/bzaat/bzaat/main/assets/card-dark.svg">
+    <img src="https://raw.githubusercontent.com/bzaat/bzaat/main/assets/card-light.svg" width="49%" alt="Spell of the Day from Potter DB with live GitHub metrics for bzaat, refreshed every 12 hours.">
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/records-dark.svg">
-    <img src="assets/records-light.svg" width="49%" alt="Ministry of Magic Records: public repositories, stars, followers, contributions in the last year, and most-used languages for bzaat.">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/bzaat/bzaat/main/assets/records-dark.svg">
+    <img src="https://raw.githubusercontent.com/bzaat/bzaat/main/assets/records-light.svg" width="49%" alt="Ministry of Magic Records: public repositories, stars, followers, contributions in the last year, and most-used languages for bzaat.">
   </picture>
 </p>
 
@@ -117,7 +117,7 @@ The code behind the SCI-2026 paper: 7 regression models, leakage-safe suburb tar
 <details>
 <summary><b>🧳 Open Newt Scamander's Case (Fantastic Beasts Archive)</b></summary>
 <br>
-<img src="assets/banner-fantastic-beasts.svg" width="100%" alt="A leather suitcase unlatches and spills gold coins, then a field journal inks in, mapping machine-learning work to magical creatures.">
+<img src="https://raw.githubusercontent.com/bzaat/bzaat/main/assets/banner-fantastic-beasts.svg" width="100%" alt="A leather suitcase unlatches and spills gold coins, then a field journal inks in, mapping machine-learning work to magical creatures.">
 
 | Creature | In the wild | In my work | Habitat (data) | Status |
 |---|---|---|---|---|
