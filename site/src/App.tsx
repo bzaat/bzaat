@@ -8,7 +8,7 @@ import { ProjectDrawer } from "./components/ProjectDrawer";
 import { Stack } from "./components/Stack";
 import { ThemeDock } from "./components/ThemeDock";
 import { AmbientCanvas } from "./components/fx/AmbientCanvas";
-import { HeroCanvas } from "./components/fx/HeroCanvas";
+import { HeroVideo } from "./components/fx/HeroVideo";
 import { useTheme } from "./theme";
 import { castAt, useSpells } from "./spells";
 import { SpellLayer } from "./components/fx/SpellLayer";
@@ -90,9 +90,9 @@ export default function App() {
       </header>
 
       <main id="main" className="pb-24">
-        {/* Hero: full-bleed canvas behind a centred content grid */}
+        {/* Hero: full-bleed looping video behind a centred content grid */}
         <div className="relative isolate overflow-hidden">
-          <HeroCanvas theme={theme} still={!spells} />
+          <HeroVideo theme={theme} still={!spells} />
         <section id="top" aria-labelledby="hero-title" className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 md:px-8 md:py-24 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <p className="inline-flex items-center gap-2.5 rounded-full border border-ok/40 px-3.5 py-1.5 text-sm">
