@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340" role="img" aria-labelledby="card-dark-t card-dark-d" font-family="Georgia, 'Palatino Linotype', 'Book Antiqua', 'Times New Roman', serif">
+  <title id="card-dark-t">Dark Arts Incantation of the Day for bzaat</title>
+  <desc id="card-dark-d">Dark Arts Incantation of the Day: Pimple Jinx (Furnunculus). Caused pimples/boils to erupt. GitHub: 5 repositories, 1 star, 5 followers, 135 contributions in the last year. Updated 2026-11-16 09:58 UTC.</desc>
+  <defs>
+    <radialGradient id="card-dark-bg" cx="30%" cy="20%" r="95%"><stop offset="0" stop-color="#0B0C10"/><stop offset="1" stop-color="#12201A"/></radialGradient>
+    <filter id="card-dark-grain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="5"/><feColorMatrix values="0 0 0 0 .17  0 0 0 0 .12  0 0 0 0 .07  0 0 0 .06 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+  </defs>
+  <style>
+    .in { animation: in 1.4s ease-out both; }
+    @keyframes in { from { opacity: 0; transform: translateY(4px) } to { opacity: 1; transform: none } }
+    .glint { animation: glint 3.2s ease-in-out infinite alternate; }
+    @keyframes glint { from { opacity: .45 } to { opacity: 1 } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect x="1.5" y="1.5" width="597" height="337" rx="14" fill="url(#card-dark-bg)" stroke="#2ECC71" stroke-opacity=".55" stroke-width="1.5"/>
+  
+  <rect x="10" y="10" width="580" height="320" rx="9" fill="none" stroke="#2ECC71" stroke-opacity=".35" stroke-dasharray="2 5"/>
+  <g class="in">
+    <text x="40" y="52" font-size="13" letter-spacing="2.5" fill="#2ECC71">DARK ARTS INCANTATION OF THE DAY</text>
+    <circle class="glint" cx="554" cy="47" r="5" fill="#2ECC71"/>
+    <text x="40" y="96" font-size="28.0" font-weight="bold" fill="#C5C6C7">Pimple Jinx</text>
+    <text x="40" y="128" font-size="18.0" font-style="italic" fill="#A9F5C6">“Furnunculus” <tspan font-size="12" fill="#8F989E">(fur-NUN-kyoo-lus)</tspan></text>
+    <text x="40" y="160" font-size="14.5" fill="#C5C6C7"><tspan x="40" dy="0">Caused pimples/boils to erupt</tspan></text>
+    <text x="40" y="226" font-size="12.5" font-style="italic" fill="#8F989E">Unforgivable of the day: <tspan fill="#A9F5C6">Crucio</tspan>, a.k.a. debugging a NaN loss at epoch 37</text>
+    <line x1="40" y1="246" x2="560" y2="246" stroke="#2ECC71" stroke-opacity=".4"/>
+    <text x="105" y="282" text-anchor="middle" font-size="24" font-weight="bold" fill="#2ECC71">5</text><text x="105" y="301" text-anchor="middle" font-size="12" fill="#8F989E">repositories</text><text x="235" y="282" text-anchor="middle" font-size="24" font-weight="bold" fill="#2ECC71">1</text><text x="235" y="301" text-anchor="middle" font-size="12" fill="#8F989E">star</text><text x="365" y="282" text-anchor="middle" font-size="24" font-weight="bold" fill="#2ECC71">5</text><text x="365" y="301" text-anchor="middle" font-size="12" fill="#8F989E">followers</text><text x="495" y="282" text-anchor="middle" font-size="24" font-weight="bold" fill="#2ECC71">135</text><text x="495" y="301" text-anchor="middle" font-size="12" fill="#8F989E">contributions, 1 yr</text>
+    <text x="576" y="324" text-anchor="end" font-size="10.5" fill="#8F989E">Jinx, curse from Potter DB · updated 2026-11-16 09:58 UTC</text>
+  </g>
+</svg>
