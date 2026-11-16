@@ -10,8 +10,8 @@ export const profile = {
   cv: "Pham_Nguyen_Khanh_Nguyen_CV.pdf",
   education: "B.Sc. Artificial Intelligence, FPT University, Ho Chi Minh City",
   graduation: "Expected May 2028",
-  availability: "Open to Spring 2027 AI & Robotics internships",
-  availabilityDetail: "11-week full-time OJT, Feb to Apr 2027, Malaysia",
+  availability: "Open to AI / Deep Learning internships, Feb–Apr 2027",
+  availabilityDetail: "11-week full-time internship (OJT) in Malaysia",
   photo: "photo.jpg",
   location: "Ho Chi Minh City, Vietnam",
   roles: "AI/ML Engineer, Deep Learning Engineer, Computer Vision Engineer, Data Scientist",
@@ -129,8 +129,8 @@ export const publications: Publication[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-export type Category = "Computer Vision" | "Embodied AI & Robotics" | "Applied ML";
-export const categories: Category[] = ["Computer Vision", "Embodied AI & Robotics", "Applied ML"];
+export type Category = "Computer Vision" | "Decision-Making AI" | "Applied ML";
+export const categories: Category[] = ["Computer Vision", "Decision-Making AI", "Applied ML"];
 
 export type Table = {
   caption: string;
@@ -328,7 +328,7 @@ export const projects: Project[] = [
   {
     id: "uav-sar",
     title: "Active evidential sensing for UAV maritime rescue",
-    category: "Embodied AI & Robotics",
+    category: "Decision-Making AI",
     summary:
       "A closed-loop UAV decision framework where evidential uncertainty drives Kalman tracking, a verification descent, and risk-averse rescue ordering. Published at IECON 2026 (third author).",
     headline: { value: "0.25 vs 0.16", label: "worst-case victim survival vs. nearest-first routing" },

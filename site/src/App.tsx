@@ -187,7 +187,7 @@ export default function App() {
           <div className="md:col-span-6">
             <h2 className="text-2xl font-semibold tracking-tight">Get in touch</h2>
             <p className="mt-3 max-w-[48ch] text-muted">
-              Looking for an AI or robotics internship from February to April 2027 in Malaysia. Email is the fastest way
+              Looking for an AI or deep learning internship from February to April 2027 in Malaysia. Email is the fastest way
               to reach me.
             </p>
             <a

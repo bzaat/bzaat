@@ -10,7 +10,7 @@ FPT University, Ho Chi Minh City, Vietnam (B.AI, expected 05/2028)
 <a href="https://www.linkedin.com/in/khanh-nguyen-pham-nguyen-7b822b371"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white"></a>
 <a href="mailto:nguyentvvn12@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white"></a>
 
-<img alt="Open to Spring 2027 AI & Robotics internships" src="https://img.shields.io/badge/Open_to-Spring_2027_AI_%26_Robotics_internships_(Feb–Apr,_Malaysia)-2ea44f">
+<img alt="Open to AI / Deep Learning internships, Feb–Apr 2027" src="https://img.shields.io/badge/Open_to-AI_%2F_Deep_Learning_internships_(Feb–Apr_2027)-2ea44f">
 
 <br clear="right">
 
