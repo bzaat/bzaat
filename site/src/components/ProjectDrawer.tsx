@@ -30,7 +30,7 @@ export function ProjectDrawer({ project, onClose }: { project: Project | null; o
           <header className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-line bg-raised/95 px-5 py-4 backdrop-blur md:px-8">
             <div className="min-w-0">
               <p className="text-sm text-muted">{project.category}</p>
-              <h2 id="drawer-title" className="mt-1 text-xl font-semibold leading-snug tracking-tight md:text-2xl">
+              <h2 id="drawer-title" className="mt-1 font-title text-xl font-semibold leading-snug md:text-2xl">
                 {project.title}
               </h2>
             </div>

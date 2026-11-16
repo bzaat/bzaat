@@ -6,7 +6,10 @@ import { Publications } from "./components/Publications";
 import { Projects } from "./components/Projects";
 import { ProjectDrawer } from "./components/ProjectDrawer";
 import { Stack } from "./components/Stack";
-import { ThemeToggle } from "./components/ThemeToggle";
+import { ThemeDock } from "./components/ThemeDock";
+import { AmbientCanvas } from "./components/fx/AmbientCanvas";
+import { HeroCanvas } from "./components/fx/HeroCanvas";
+import { useTheme } from "./theme";
 
 const cvHref = `${import.meta.env.BASE_URL}${profile.cv}`;
 const projectFromHash = () => {
@@ -34,6 +37,7 @@ export default function App() {
   }, []);
 
   const project = projects.find((p) => p.id === openId) ?? null;
+  const theme = useTheme();
 
   return (
     <>
@@ -46,7 +50,7 @@ export default function App() {
 
       <header className="sticky top-0 z-40 border-b border-line bg-bg/90 backdrop-blur">
         <nav aria-label="Primary" className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 md:px-8">
-          <a href="#top" className="hidden font-semibold tracking-tight sm:block">
+          <a href="#top" className="hidden font-display font-semibold tracking-wide sm:block">
             Khanh Nguyen Pham
           </a>
           <ul className="flex items-center text-sm sm:gap-2">
@@ -71,16 +75,15 @@ export default function App() {
                 CV
               </a>
             </li>
-            <li>
-              <ThemeToggle />
-            </li>
           </ul>
         </nav>
       </header>
 
-      <main id="main" className="mx-auto max-w-6xl px-4 md:px-8">
-        {/* Hero */}
-        <section id="top" aria-labelledby="hero-title" className="grid items-center gap-12 py-16 md:py-24 lg:grid-cols-12">
+      <main id="main">
+        {/* Hero: full-bleed canvas behind a centred content grid */}
+        <div className="relative isolate overflow-hidden">
+          <HeroCanvas theme={theme} />
+        <section id="top" aria-labelledby="hero-title" className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 md:px-8 md:py-24 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <p className="inline-flex items-center gap-2.5 rounded-full border border-ok/40 px-3.5 py-1.5 text-sm">
               <span aria-hidden="true" className="size-2 shrink-0 rounded-full bg-ok" />
@@ -97,7 +100,7 @@ export default function App() {
                 fetchPriority="high"
                 className="h-[6.75rem] w-20 shrink-0 rounded-md border border-line-strong object-cover md:h-36 md:w-28"
               />
-              <h1 id="hero-title" className="min-w-0 text-4xl font-semibold leading-[1.08] tracking-tight md:text-5xl">
+              <h1 id="hero-title" className="glow-title min-w-0 font-display text-4xl font-semibold leading-[1.1] md:text-5xl">
                 {profile.name}
               </h1>
             </div>
@@ -161,7 +164,7 @@ export default function App() {
             </div>
           </div>
 
-          <figure className="rounded-lg border border-line bg-raised p-4 md:p-6 lg:col-span-6">
+          <figure className="fx-card rounded-lg p-4 md:p-6 lg:col-span-6">
             <ValCurves />
             <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t border-line pt-4 text-sm text-muted">
               <span className="max-w-[46ch]">
@@ -178,8 +181,9 @@ export default function App() {
             </figcaption>
           </figure>
         </section>
+        </div>
 
-        <div className="space-y-28 pb-28">
+        <div className="mx-auto max-w-6xl space-y-28 px-4 pb-28 md:px-8">
           <Publications />
           <Projects onOpen={open} />
           <Stack />
@@ -187,9 +191,9 @@ export default function App() {
       </main>
 
       <footer className="border-t border-line bg-raised">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-14 md:grid-cols-12 md:px-8">
+        <div className="mx-auto grid max-w-6xl gap-8 px-4 pt-14 pb-28 md:grid-cols-12 md:px-8">
           <div className="md:col-span-6">
-            <h2 className="text-2xl font-semibold tracking-tight">Get in touch</h2>
+            <h2 className="font-display text-2xl font-semibold">Get in touch</h2>
             <p className="mt-3 max-w-[48ch] text-muted">
               Looking for an AI or deep learning internship from February to April 2027 in Malaysia. Email is the fastest way
               to reach me.
@@ -224,6 +228,8 @@ export default function App() {
       </footer>
 
       <ProjectDrawer project={project} onClose={close} />
+      <AmbientCanvas theme={theme} />
+      <ThemeDock />
     </>
   );
 }

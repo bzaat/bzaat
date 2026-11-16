@@ -47,14 +47,14 @@ export function Projects({ onOpen }: { onOpen: (id: string) => void }) {
         {visible.length} {visible.length === 1 ? "project" : "projects"} shown
       </p>
 
-      <ul className="grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-2">
+      <ul className="grid gap-5 md:grid-cols-2">
         {visible.map((p) => (
-          <li key={p.id} className="bg-bg">
+          <li key={p.id} className="flex">
             <button
               type="button"
               onClick={() => onOpen(p.id)}
               aria-haspopup="dialog"
-              className="group flex h-full w-full cursor-pointer flex-col p-6 text-left transition-colors hover:bg-raised md:p-8"
+              className="fx-card group flex h-full w-full cursor-pointer flex-col rounded-lg p-6 text-left md:p-8"
             >
               <span className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted">
                 <span>{p.category}</span>
@@ -62,7 +62,7 @@ export function Projects({ onOpen }: { onOpen: (id: string) => void }) {
                   <span className="rounded-sm border border-amber/50 px-1.5 font-mono text-xs text-amber">{p.status}</span>
                 )}
               </span>
-              <span className="mt-3 block text-xl font-semibold leading-snug tracking-tight group-hover:text-amber">
+              <span className="mt-3 block font-title text-[1.375rem] font-semibold leading-snug group-hover:text-amber">
                 {p.title}
               </span>
               <span className="mt-3 block max-w-[60ch] text-[0.9375rem] text-muted">{p.summary}</span>

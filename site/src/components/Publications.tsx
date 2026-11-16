@@ -53,7 +53,7 @@ function PaperEntry({ p }: { p: Publication }) {
       </div>
 
       <div className="min-w-0 md:col-span-9">
-        <h3 id={`pub-${p.id}`} className="text-xl font-semibold leading-snug tracking-tight md:text-2xl">
+        <h3 id={`pub-${p.id}`} className="font-title text-xl font-semibold leading-snug md:text-[1.6rem]">
           {p.title}
         </h3>
         <p className="mt-2 text-sm text-muted">

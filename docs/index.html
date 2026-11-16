@@ -4,17 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark light" />
-    <meta name="theme-color" content="#0E131A" />
+    <meta name="theme-color" content="#090A0F" />
     <script>
       // Set the theme before first paint: saved choice, else the OS setting.
       (function () {
         var t = null;
         try { t = localStorage.getItem("theme"); } catch (e) {}
-        if (t !== "light" && t !== "dark") {
-          t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        if (t === "light") t = "auror";
+        if (t === "dark") t = "darkarts";
+        if (t !== "auror" && t !== "darkarts" && t !== "beasts") {
+          t = window.matchMedia("(prefers-color-scheme: light)").matches ? "auror" : "darkarts";
         }
         document.documentElement.dataset.theme = t;
-        document.querySelector('meta[name="theme-color"]').setAttribute("content", t === "light" ? "#F4F6F9" : "#0E131A");
+        var c = { auror: "#F6EEDB", darkarts: "#090A0F", beasts: "#2A1A16" }[t];
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", c);
       })();
     </script>
     <title>Pham Nguyen Khanh Nguyen | Applied ML & Computer Vision</title>
@@ -29,8 +32,8 @@
     />
     <meta property="og:type" content="website" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E131A'/%3E%3Cpath d='M5 25 C10 24 12 9 17 8 S25 7 27 7' fill='none' stroke='%23F0B44C' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="/bzaat/assets/index-DlW3YlXG.js"></script>
-    <link rel="stylesheet" crossorigin href="/bzaat/assets/index-BAWPwH0D.css">
+    <script type="module" crossorigin src="/bzaat/assets/index-CbYZdCyU.js"></script>
+    <link rel="stylesheet" crossorigin href="/bzaat/assets/index-D5KEFhVx.css">
   </head>
   <body>
     <div id="root"></div>
