@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340" role="img" aria-labelledby="records-light-t records-light-d" font-family="Georgia, 'Palatino Linotype', 'Book Antiqua', 'Times New Roman', serif">
+  <title id="records-light-t">Ministry of Magic Records: GitHub statistics for bzaat</title>
+  <desc id="records-light-d">Public repositories: 5; Stars earned: 1; Followers: 5; Contributions, last year: 135. Top languages by code size, excluding notebooks and HTML/CSS: Python 81%, TypeScript 17%, Dockerfile 1%, Other 1%. Updated 2026-11-16 09:58 UTC.</desc>
+  <defs>
+    <radialGradient id="records-light-bg" cx="30%" cy="20%" r="95%"><stop offset="0" stop-color="#F4E4BC"/><stop offset="1" stop-color="#E6CF98"/></radialGradient>
+    <filter id="records-light-grain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="5"/><feColorMatrix values="0 0 0 0 .17  0 0 0 0 .12  0 0 0 0 .07  0 0 0 .06 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+  </defs>
+  <style>
+    .in { animation: in 1.4s ease-out both; }
+    @keyframes in { from { opacity: 0; transform: translateY(4px) } to { opacity: 1; transform: none } }
+    .glint { animation: glint 3.2s ease-in-out infinite alternate; }
+    @keyframes glint { from { opacity: .45 } to { opacity: 1 } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect x="1.5" y="1.5" width="597" height="337" rx="14" fill="url(#records-light-bg)" stroke="#2C1E12" stroke-opacity=".55" stroke-width="1.5"/>
+  <rect x="1.5" y="1.5" width="597" height="337" rx="14" fill="#F4E4BC" filter="url(#records-light-grain)"/>
+  <rect x="10" y="10" width="580" height="320" rx="9" fill="none" stroke="#2C1E12" stroke-opacity=".35" stroke-dasharray="2 5"/>
+  <g class="in">
+    <text x="40" y="52" font-size="13" letter-spacing="2.5" fill="#8C6D12">MINISTRY OF MAGIC RECORDS</text>
+    <circle class="glint" cx="554" cy="47" r="5" fill="#8C6D12"/>
+    <line x1="40" y1="66" x2="560" y2="66" stroke="#2C1E12" stroke-opacity=".4"/>
+    <text x="40" y="96" font-size="15" fill="#2C1E12">Public repositories</text><text x="560" y="96" text-anchor="end" font-size="16" font-weight="bold" fill="#8C6D12">5</text><text x="40" y="123" font-size="15" fill="#2C1E12">Stars earned</text><text x="560" y="123" text-anchor="end" font-size="16" font-weight="bold" fill="#8C6D12">1</text><text x="40" y="150" font-size="15" fill="#2C1E12">Followers</text><text x="560" y="150" text-anchor="end" font-size="16" font-weight="bold" fill="#8C6D12">5</text><text x="40" y="177" font-size="15" fill="#2C1E12">Contributions, last year</text><text x="560" y="177" text-anchor="end" font-size="16" font-weight="bold" fill="#8C6D12">135</text>
+    <text x="40" y="208" font-size="13" fill="#5A4630">Most-used languages <tspan font-style="italic" font-size="11">(excl. notebooks, HTML/CSS)</tspan></text>
+    <rect x="40" y="222" width="520" height="12" rx="6" fill="#E6CF98"/>
+    <g><rect x="40.0" y="222" width="418.8" height="12" fill="#8C6D12"/><rect x="458.8" y="222" width="90.7" height="12" fill="#2E6F78"/><rect x="549.5" y="222" width="7.4" height="12" fill="#7A2E1E"/><rect x="557.0" y="222" width="3.0" height="12" fill="#3D5A3A"/></g>
+    <circle cx="45" cy="258" r="5" fill="#8C6D12"/><text x="56" y="262" font-size="13" fill="#2C1E12">Python <tspan fill="#5A4630">80.5%</tspan></text><circle cx="221" cy="258" r="5" fill="#2E6F78"/><text x="232" y="262" font-size="13" fill="#2C1E12">TypeScript <tspan fill="#5A4630">17.4%</tspan></text><circle cx="397" cy="258" r="5" fill="#7A2E1E"/><text x="408" y="262" font-size="13" fill="#2C1E12">Dockerfile <tspan fill="#5A4630">1.4%</tspan></text><circle cx="45" cy="282" r="5" fill="#3D5A3A"/><text x="56" y="286" font-size="13" fill="#2C1E12">Other <tspan fill="#5A4630">0.6%</tspan></text>
+    <text x="576" y="324" text-anchor="end" font-size="10.5" fill="#5A4630">updated 2026-11-16 09:58 UTC</text>
+  </g>
+</svg>

@@ -1,0 +1,45 @@
+# Regenerates the live profile cards (Spell of the Day + Ministry of Magic Records)
+# in light and dark variants, and commits them only when they changed.
+# Note: GitHub pauses scheduled workflows in repos with no activity for 60 days;
+# re-enable from the Actions tab if that happens (no keep-alive commits).
+name: Update magic cards
+
+on:
+  schedule:
+    - cron: "17 */12 * * *" # every 12 hours, off the top of the hour
+  workflow_dispatch:
+
+permissions:
+  contents: write # commit the regenerated SVGs
+
+concurrency:
+  group: update-magic
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Render cards
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # enables the contributions count (GraphQL)
+        run: python scripts/generate_cards.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/card-light.svg assets/card-dark.svg assets/records-light.svg assets/records-dark.svg
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Update magic cards [skip ci]"
+          git push
