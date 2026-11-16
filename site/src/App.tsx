@@ -14,6 +14,7 @@ import { castAt, useSpells } from "./spells";
 import { SpellLayer } from "./components/fx/SpellLayer";
 import { SpellToggle } from "./components/SpellToggle";
 import { ChibiCast } from "./components/ChibiCast";
+import { DuelCutscene } from "./components/fx/DuelCutscene";
 
 const cvHref = `${import.meta.env.BASE_URL}${profile.cv}`;
 const projectFromHash = () => {
@@ -244,6 +245,7 @@ export default function App() {
       <ProjectDrawer project={project} onClose={close} />
       {spells && <AmbientCanvas theme={theme} />}
       <SpellLayer />
+      <DuelCutscene />
       <ThemeDock />
     </>
   );

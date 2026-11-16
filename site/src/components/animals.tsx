@@ -94,3 +94,32 @@ export function Niffler() {
     </g>
   );
 }
+
+/** Thunderbird: a round golden storm bird with glowing blue-tipped wings (wings flap via .tb-wing). */
+export function Thunderbird() {
+  return (
+    <g>
+      <ellipse cx="40" cy="44" rx="34" ry="30" fill="#7FD3F5" opacity=".18" />
+      <g className="tb-wing tb-wing-l">
+        <path d="M30 44 Q8 26 2 40 Q10 42 6 50 Q14 50 12 58 Q22 54 30 52Z" fill="#E7B54A" stroke="#8C6D12" strokeWidth="1" />
+        <path d="M6 41 Q12 44 9 49 M13 51 Q17 54 14 57" fill="none" stroke="#5EC8F2" strokeWidth="2" strokeLinecap="round" />
+      </g>
+      <g className="tb-wing tb-wing-r">
+        <path d="M50 44 Q72 26 78 40 Q70 42 74 50 Q66 50 68 58 Q58 54 50 52Z" fill="#E7B54A" stroke="#8C6D12" strokeWidth="1" />
+        <path d="M74 41 Q68 44 71 49 M67 51 Q63 54 66 57" fill="none" stroke="#5EC8F2" strokeWidth="2" strokeLinecap="round" />
+      </g>
+      <path d="M33 66 L30 76 M40 67 L40 78 M47 66 L50 76" stroke="#E7B54A" strokeWidth="3" strokeLinecap="round" />
+      <ellipse cx="40" cy="48" rx="15" ry="18" fill="#F2C75C" stroke="#8C6D12" strokeWidth="1.2" />
+      <ellipse cx="40" cy="54" rx="9" ry="10" fill="#FBE3A0" />
+      <path d="M33 26 Q35 16 39 22 Q41 12 44 22 Q48 15 47 27" fill="#5EC8F2" stroke="#2B7FA8" strokeWidth=".8" />
+      <circle cx="40" cy="33" r="11" fill="#F2C75C" stroke="#8C6D12" strokeWidth="1.2" />
+      <circle cx="36" cy="32" r="2.4" fill="#1E120F" />
+      <circle cx="44" cy="32" r="2.4" fill="#1E120F" />
+      <circle cx="36.8" cy="31.2" r=".8" fill="#fff" />
+      <circle cx="44.8" cy="31.2" r=".8" fill="#fff" />
+      <path d="M37.5 36 L42.5 36 L40 40.5Z" fill="#D9822B" stroke="#8C5E2A" strokeWidth=".6" />
+      <ellipse cx="32" cy="37" rx="2.2" ry="1.2" fill="#F28C8C" opacity=".5" />
+      <ellipse cx="48" cy="37" rx="2.2" ry="1.2" fill="#F28C8C" opacity=".5" />
+    </g>
+  );
+}
