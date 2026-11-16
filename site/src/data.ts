@@ -327,7 +327,10 @@ export const projects: Project[] = [
     ],
     limitations:
       "12 matches, 9 players, one broadcast style. Every signal comes from annotations, so their errors cap performance. The detector has no results yet.",
-    links: [{ label: "Repository", href: "https://github.com/bzaat/Badminton_Project" }],
+    links: [
+      { label: "Repository", href: "https://github.com/bzaat/Badminton_Project" },
+      { label: "Project showcase", href: "https://bzaat.github.io/Badminton_Project/" },
+    ],
   },
   {
     id: "uav-sar",
