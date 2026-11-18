@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340" role="img" aria-labelledby="card-dark-t card-dark-d" font-family="Georgia, 'Palatino Linotype', 'Book Antiqua', 'Times New Roman', serif">
   <title id="card-dark-t">Concept of the Night for bzaat</title>
-  <desc id="card-dark-d">Concept of the Night: Self-Attention (softmax(QKᵀ / √d) · V). Lets every token weigh every other token; the core operation of Transformers and Vision Transformers. GitHub: 5 repositories, 1 star, 6 followers, 206 contributions in the last year. Updated 2026-11-18 07:30 UTC.</desc>
+  <desc id="card-dark-d">Concept of the Night: Transfer Learning (pretrain → fine-tune). Reuses features learned on a large dataset, so a small dataset reaches high accuracy in a few epochs. GitHub: 5 repositories, 1 star, 6 followers, 206 contributions in the last year. Updated 2026-11-18 20:33 UTC.</desc>
   <defs>
     <radialGradient id="card-dark-bg" cx="30%" cy="20%" r="95%"><stop offset="0" stop-color="#0B0C10"/><stop offset="1" stop-color="#12201A"/></radialGradient>
     <filter id="card-dark-grain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="5"/><feColorMatrix values="0 0 0 0 .17  0 0 0 0 .12  0 0 0 0 .07  0 0 0 .06 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
@@ -18,12 +18,12 @@
   <g class="in">
     <text x="40" y="52" font-size="13" letter-spacing="2.5" fill="#2ECC71">CONCEPT OF THE NIGHT</text>
     <circle class="glint" cx="554" cy="47" r="5" fill="#2ECC71"/>
-    <text x="40" y="96" font-size="28.0" font-weight="bold" fill="#C5C6C7">Self-Attention</text>
-    <text x="40" y="128" font-size="18.0" font-style="italic" fill="#A9F5C6">softmax(QKᵀ / √d) · V</text>
-    <text x="40" y="160" font-size="14.5" fill="#C5C6C7"><tspan x="40" dy="0">Lets every token weigh every other token; the core operation</tspan><tspan x="40" dy="19">of Transformers and Vision Transformers.</tspan></text>
-    <text x="40" y="226" font-size="12.5" font-style="italic" fill="#8F989E">Debug note of the day: <tspan fill="#A9F5C6">debugging a NaN loss at epoch 37</tspan></text>
+    <text x="40" y="96" font-size="28.0" font-weight="bold" fill="#C5C6C7">Transfer Learning</text>
+    <text x="40" y="128" font-size="18.0" font-style="italic" fill="#A9F5C6">pretrain → fine-tune</text>
+    <text x="40" y="160" font-size="14.5" fill="#C5C6C7"><tspan x="40" dy="0">Reuses features learned on a large dataset, so a small dataset</tspan><tspan x="40" dy="19">reaches high accuracy in a few epochs.</tspan></text>
+    <text x="40" y="226" font-size="12.5" font-style="italic" fill="#8F989E">Debug note of the day: <tspan fill="#A9F5C6">CUDA out of memory at batch size 65</tspan></text>
     <line x1="40" y1="246" x2="560" y2="246" stroke="#2ECC71" stroke-opacity=".4"/>
     <text x="105" y="282" text-anchor="middle" font-size="24" font-weight="bold" fill="#2ECC71">5</text><text x="105" y="301" text-anchor="middle" font-size="12" fill="#8F989E">repositories</text><text x="235" y="282" text-anchor="middle" font-size="24" font-weight="bold" fill="#2ECC71">1</text><text x="235" y="301" text-anchor="middle" font-size="12" fill="#8F989E">star</text><text x="365" y="282" text-anchor="middle" font-size="24" font-weight="bold" fill="#2ECC71">6</text><text x="365" y="301" text-anchor="middle" font-size="12" fill="#8F989E">followers</text><text x="495" y="282" text-anchor="middle" font-size="24" font-weight="bold" fill="#2ECC71">206</text><text x="495" y="301" text-anchor="middle" font-size="12" fill="#8F989E">contributions, 1 yr</text>
-    <text x="576" y="324" text-anchor="end" font-size="10.5" fill="#8F989E">ML / CV concept · updated 2026-11-18 07:30 UTC</text>
+    <text x="576" y="324" text-anchor="end" font-size="10.5" fill="#8F989E">ML / CV concept · updated 2026-11-18 20:33 UTC</text>
   </g>
 </svg>
