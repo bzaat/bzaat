@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340" role="img" aria-labelledby="card-light-t card-light-d" font-family="Georgia, 'Palatino Linotype', 'Book Antiqua', 'Times New Roman', serif">
   <title id="card-light-t">Concept of the Day for bzaat</title>
-  <desc id="card-light-d">Concept of the Day: Non-Maximum Suppression (keep the top box, drop IoU &gt; τ). Removes duplicate detections by keeping the highest-scoring box and discarding boxes that overlap it heavily. GitHub: 5 repositories, 1 star, 6 followers, 206 contributions in the last year. Updated 2026-11-19 20:38 UTC.</desc>
+  <desc id="card-light-d">Concept of the Day: SHAP Values (f(x) = φ₀ + Σᵢ φᵢ). Shapley-value attributions that split a single prediction fairly among the input features. GitHub: 5 repositories, 1 star, 6 followers, 206 contributions in the last year. Updated 2026-11-20 07:18 UTC.</desc>
   <defs>
     <radialGradient id="card-light-bg" cx="30%" cy="20%" r="95%"><stop offset="0" stop-color="#F4E4BC"/><stop offset="1" stop-color="#E6CF98"/></radialGradient>
     <filter id="card-light-grain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="5"/><feColorMatrix values="0 0 0 0 .17  0 0 0 0 .12  0 0 0 0 .07  0 0 0 .06 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
@@ -18,12 +18,12 @@
   <g class="in">
     <text x="40" y="52" font-size="13" letter-spacing="2.5" fill="#8C6D12">CONCEPT OF THE DAY</text>
     <circle class="glint" cx="554" cy="47" r="5" fill="#8C6D12"/>
-    <text x="40" y="96" font-size="28.0" font-weight="bold" fill="#2C1E12">Non-Maximum Suppression</text>
-    <text x="40" y="128" font-size="18.0" font-style="italic" fill="#2E6F78">keep the top box, drop IoU &gt; τ</text>
-    <text x="40" y="160" font-size="14.5" fill="#2C1E12"><tspan x="40" dy="0">Removes duplicate detections by keeping the highest-scoring</tspan><tspan x="40" dy="19">box and discarding boxes that overlap it heavily.</tspan></text>
+    <text x="40" y="96" font-size="28.0" font-weight="bold" fill="#2C1E12">SHAP Values</text>
+    <text x="40" y="128" font-size="18.0" font-style="italic" fill="#2E6F78">f(x) = φ₀ + Σᵢ φᵢ</text>
+    <text x="40" y="160" font-size="14.5" fill="#2C1E12"><tspan x="40" dy="0">Shapley-value attributions that split a single prediction</tspan><tspan x="40" dy="19">fairly among the input features.</tspan></text>
     <text x="40" y="226" font-size="12.5" font-style="italic" fill="#5A4630">Research focus: computer vision, uncertainty-aware perception, embodied AI</text>
     <line x1="40" y1="246" x2="560" y2="246" stroke="#2C1E12" stroke-opacity=".4"/>
     <text x="105" y="282" text-anchor="middle" font-size="24" font-weight="bold" fill="#8C6D12">5</text><text x="105" y="301" text-anchor="middle" font-size="12" fill="#5A4630">repositories</text><text x="235" y="282" text-anchor="middle" font-size="24" font-weight="bold" fill="#8C6D12">1</text><text x="235" y="301" text-anchor="middle" font-size="12" fill="#5A4630">star</text><text x="365" y="282" text-anchor="middle" font-size="24" font-weight="bold" fill="#8C6D12">6</text><text x="365" y="301" text-anchor="middle" font-size="12" fill="#5A4630">followers</text><text x="495" y="282" text-anchor="middle" font-size="24" font-weight="bold" fill="#8C6D12">206</text><text x="495" y="301" text-anchor="middle" font-size="12" fill="#5A4630">contributions, 1 yr</text>
-    <text x="576" y="324" text-anchor="end" font-size="10.5" fill="#5A4630">ML / CV concept · updated 2026-11-19 20:38 UTC</text>
+    <text x="576" y="324" text-anchor="end" font-size="10.5" fill="#5A4630">ML / CV concept · updated 2026-11-20 07:18 UTC</text>
   </g>
 </svg>
